@@ -10,9 +10,9 @@ public class ConexaoDAO {
 	private static final String _PASS = "root";
 	
 	/*Retorna a conexão com o banco de dados*/
-	public static Connection getMyConnection() throws ClassNotFoundException, SQLException { 
+	public static Connection getConnection() throws ClassNotFoundException, SQLException { 
 
-			String url = "jdbc:mysql://localhost:3306/bd_locadora_trabalho";
+			String url = "jdbc:mysql://localhost:3306/logproj";
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url, _USER,_PASS);
 			return con;

@@ -13,27 +13,33 @@
 <link href="/Projeto LDS/Bootstrap/css/bootstrap.css.map" rel="Stylesheet" />
 <link href="/Projeto LDS/Bootstrap/css/bootstrap.min.css" rel="Stylesheet" media="screen"/>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 <title>Projeto LDS</title>
+
 </head>
 <body>
 
+<form class="well well-lg" action="AutenticacaoController" method="post">
+
 <div align="center">
 
-<img alt="Locadora Logo" height="150" width="280" src="<%=request.getContextPath()%>/Images/logisticaglobo.jpg">
+<img alt="Locadora Logo" height="150" width="250" src="<%=request.getContextPath()%>/Images/logisticaglobo.jpg">
 <br>
 <br>
 <span>Login:</span><input type="text" name="txtLogin" placeholder="Seu login">
 <br>
 <br>
-<span>Senha:</span><input type="password" name="txtPass" placeholder="Sua senha">
+<span>Senha:</span><input type="password" name="txtSenha" placeholder="Sua senha">
 <br>
 <br>
-<a link href="#" class="btn btn-success">Entrar</a>
+<input class="btn btn-success" type="submit" value="Cadastrar" name="btnCadastrar">
+
 </div>
+
+</form>
 
 </body>
 </html>

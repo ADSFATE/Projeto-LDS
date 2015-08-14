@@ -9,4 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>AutenticacaoController</display-name>
+    <servlet-name>AutenticacaoController</servlet-name>
+    <servlet-class>br.com.plds.controller.AutenticacaoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutenticacaoController</servlet-name>
+    <url-pattern>/AutenticacaoController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CadastroController</display-name>
+    <servlet-name>CadastroController</servlet-name>
+    <servlet-class>br.com.plds.controller.CadastroController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CadastroController</servlet-name>
+    <url-pattern>/CadastroController</url-pattern>
+  </servlet-mapping>
 </web-app>
