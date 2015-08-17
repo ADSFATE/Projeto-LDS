@@ -33,16 +33,14 @@ public class AutenticacaoController extends HttpServlet {
 		try {
 			if(aut.autenticar(user)){
 				
-				request.getRequestDispatcher("cadastro.jsp").forward(request, response);
+				request.getRequestDispatcher("painel.jsp").forward(request, response);
 				
 			}
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
-	
-	
-	
+
 		
 	}
 

@@ -15,14 +15,14 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <title>Projeto LDS</title>
 
 </head>
 <body>
 
-<form class="well well-lg" action="AutenticacaoController" method="post">
+<form action="AutenticacaoController" method="post">
 
 <div align="center">
 

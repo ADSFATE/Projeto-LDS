@@ -38,9 +38,33 @@ public class UsuarioDAO {
 
 	}
 
-	public String getNomeByUser(String user) {
+	public String getNomeByUser(String user) throws ClassNotFoundException, SQLException {
 
-		return "";
+		Connection cn = ConexaoDAO.getConnection();
+		PreparedStatement ps = cn
+				.prepareStatement("SELECT nome FROM usuario WHERE user = ?");
+
+		try {
+
+			ps.setString(1, user);
+			ResultSet rs = ps.executeQuery();
+			String nome = "";
+
+			while (rs.next()) {
+
+				nome = rs.getString(1);
+
+			}
+
+			return nome;
+			
+		} catch (Exception e) {
+
+			ps.close();
+			cn.close();
+			return "";
+
+		}
 
 	}
 
