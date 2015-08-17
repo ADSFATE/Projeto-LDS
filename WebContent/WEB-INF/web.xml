@@ -29,4 +29,14 @@
     <servlet-name>CadastroController</servlet-name>
     <url-pattern>/CadastroController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AtribuirModemController</display-name>
+    <servlet-name>AtribuirModemController</servlet-name>
+    <servlet-class>br.com.plds.controller.AtribuirModemController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AtribuirModemController</servlet-name>
+    <url-pattern>/AtribuirModemController</url-pattern>
+  </servlet-mapping>
 </web-app>

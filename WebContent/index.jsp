@@ -35,7 +35,7 @@
 <span>Senha:</span><input type="password" name="txtSenha" placeholder="Sua senha">
 <br>
 <br>
-<input class="btn btn-success" type="submit" value="Cadastrar" name="btnCadastrar">
+<input class="btn btn-success" type="submit" value="Entrar" name="btnEntrar">
 
 </div>
 
