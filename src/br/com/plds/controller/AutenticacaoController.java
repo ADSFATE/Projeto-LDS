@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.plds.model.bo.AutenticacaoBO;
+import br.com.plds.model.dao.UsuarioDAO;
 import br.com.plds.model.vo.Usuario;
 
 /**
@@ -29,18 +30,36 @@ public class AutenticacaoController extends HttpServlet {
 		user.setPassword(senha);
 		
 		AutenticacaoBO aut = new AutenticacaoBO();
+		UsuarioDAO uDAO = new UsuarioDAO();
 		
 		try {
+			
 			if(aut.autenticar(user)){
 				
-				request.getRequestDispatcher("painel.jsp").forward(request, response);
+				String role = uDAO.getRoleByUser(login);
 				
+				if(role.equals("supervisor")){
+					
+					request.getSession().setAttribute("user",login);
+					request.getSession().setAttribute("role","supervisor");
+					request.getRequestDispatcher("painel.jsp").forward(request, response);
+					
+				}
+				
+				else if(role.equals("tecnico")){
+					
+					request.getSession().setAttribute("user",login);
+					request.getSession().setAttribute("role","tecnico");
+					request.getRequestDispatcher("paineltec.jsp").forward(request, response);
+					
+				}
+					
 			}
+			
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
-
 		
 	}
 

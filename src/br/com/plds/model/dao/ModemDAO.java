@@ -48,22 +48,64 @@ public class ModemDAO {
 		PreparedStatement st = null;
 
 		try {
-			
+
 			con = ConexaoDAO.getConnection();
-			st = con.prepareStatement("INSERT INTO atr_modem (num_serie,tipo,fabricante,mat_tecnico) VALUES(?,?,?,?)");
-			st.setString(1,m.getNumeroSerie());
-			st.setString(2,m.getTipo());
-			st.setString(3,m.getFabricante());
-			st.setString(4,m.getMatTecnico());
+			st = con.prepareStatement("INSERT INTO atr_modem (num_serie,tipo,fabricante,mat_tecnico,status) VALUES(?,?,?,?,'ATRIBUIDO')");
+			st.setString(1, m.getNumeroSerie());
+			st.setString(2, m.getTipo());
+			st.setString(3, m.getFabricante());
+			st.setString(4, m.getMatTecnico());
 
 			return st.execute();
 
 		} catch (Exception e) {
-		
+
 			st.close();
 			con.close();
 			return false;
-			
+
+		}
+
+	}
+
+	public ArrayList<Modem> getModensAtribuidosPorTecnico(String mat)
+			throws ClassNotFoundException, SQLException {
+
+		Connection con = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			ResultSet rs = con.createStatement().executeQuery(
+					"SELECT id_atribuicao,num_serie,tipo,fabricante,mat_tecnico,data_atribuicao,data_baixado,num_circuito"
+					+ ",rat_frente,raf_verso,status FROM modem where mat_tecnico='" + mat + "'");
+			ArrayList<Modem> tipos = new ArrayList<>();
+
+			while (rs.next()) {
+				Modem m = new Modem();
+				m.setIdAtribuicao(rs.getInt(1));
+				m.setNumeroSerie(rs.getString(2));
+				m.setTipo(rs.getString(3));
+				m.setFabricante(rs.getString(4));
+				m.setMatTecnico(rs.getString(5));
+				m.setDataAtribuicao(rs.getString(6));
+				m.setDataBaixado(rs.getString(7));
+				m.setNumeroCircuito(rs.getInt(8));
+				m.setRatFrente(rs.getString(9));
+				m.setRatVerso(rs.getString(10));
+				m.setStatus(rs.getString(11));
+				tipos.add(m);
+			}
+
+			return tipos;
+
+		}
+
+		catch (Exception e) {
+
+			con.close();
+			return null;
+
 		}
 
 	}

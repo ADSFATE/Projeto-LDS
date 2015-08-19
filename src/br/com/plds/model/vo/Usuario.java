@@ -5,7 +5,14 @@ public class Usuario {
 	private String login;
 	private String password;
 	private String nome;
+	private String role;
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getNome() {
 		return nome;
 	}

@@ -17,7 +17,7 @@ public class UsuarioDAO {
 				.prepareStatement("INSERT INTO usuario VALUES(?,?,?)");
 
 		try {
-			
+
 			ps.setString(1, usuario.getLogin());
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getNome());
@@ -38,7 +38,8 @@ public class UsuarioDAO {
 
 	}
 
-	public String getNomeByUser(String user) throws ClassNotFoundException, SQLException {
+	public String getNomeByUser(String user) throws ClassNotFoundException,
+			SQLException {
 
 		Connection cn = ConexaoDAO.getConnection();
 		PreparedStatement ps = cn
@@ -57,7 +58,7 @@ public class UsuarioDAO {
 			}
 
 			return nome;
-			
+
 		} catch (Exception e) {
 
 			ps.close();
@@ -88,6 +89,37 @@ public class UsuarioDAO {
 			}
 
 			return senha;
+		} catch (Exception e) {
+
+			ps.close();
+			cn.close();
+			return "";
+
+		}
+
+	}
+
+	public String getRoleByUser(String user) throws ClassNotFoundException,
+			SQLException {
+
+		Connection cn = ConexaoDAO.getConnection();
+		PreparedStatement ps = cn
+				.prepareStatement("SELECT role FROM usuario WHERE user = ?");
+
+		try {
+
+			ps.setString(1, user);
+			ResultSet rs = ps.executeQuery();
+			String role = "";
+
+			while (rs.next()) {
+
+				role = rs.getString(1);
+
+			}
+
+			return role;
+
 		} catch (Exception e) {
 
 			ps.close();
