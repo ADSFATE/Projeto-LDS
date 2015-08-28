@@ -1,0 +1,147 @@
+-- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+--
+-- Host: localhost    Database: logproj
+-- ------------------------------------------------------
+-- Server version	5.6.23-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `atr_modem`
+--
+
+DROP TABLE IF EXISTS `atr_modem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `atr_modem` (
+  `id_atribuicao` int(11) NOT NULL AUTO_INCREMENT,
+  `num_serie` int(11) NOT NULL,
+  `tipo` varchar(45) NOT NULL,
+  `fabricante` varchar(50) NOT NULL,
+  `mat_tecnico` varchar(10) NOT NULL,
+  `data_atribuicao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_baixado` datetime DEFAULT NULL,
+  `num_circuito` int(20) DEFAULT NULL,
+  `rat_frente` varchar(250) DEFAULT NULL,
+  `rat_verso` varchar(250) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_atribuicao`),
+  KEY `fk_matTecnico_idx` (`mat_tecnico`),
+  CONSTRAINT `fk_matTecnico` FOREIGN KEY (`mat_tecnico`) REFERENCES `tecnicos` (`matricula`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fabricante`
+--
+
+DROP TABLE IF EXISTS `fabricante`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fabricante` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `materiais`
+--
+
+DROP TABLE IF EXISTS `materiais`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `materiais` (
+  `id` int(11) NOT NULL,
+  `material` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `modem`
+--
+
+DROP TABLE IF EXISTS `modem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `modem` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `sta_modem`
+--
+
+DROP TABLE IF EXISTS `sta_modem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sta_modem` (
+  `id_atribuicao` int(11) NOT NULL,
+  `data_baixado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mat_tecnico` varchar(10) NOT NULL,
+  `num_circuito` int(11) NOT NULL,
+  `rat_frente` varchar(250) NOT NULL,
+  `rat_verso` varchar(250) NOT NULL,
+  PRIMARY KEY (`id_atribuicao`),
+  KEY `fk_matTecnico_idx` (`mat_tecnico`),
+  KEY `fk_matTecnico_sta_idx` (`mat_tecnico`),
+  CONSTRAINT `fk_atr_sta` FOREIGN KEY (`id_atribuicao`) REFERENCES `atr_modem` (`id_atribuicao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_matTecnico_sta` FOREIGN KEY (`mat_tecnico`) REFERENCES `tecnicos` (`matricula`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tecnicos`
+--
+
+DROP TABLE IF EXISTS `tecnicos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tecnicos` (
+  `matricula` varchar(10) NOT NULL,
+  `nome` mediumtext NOT NULL,
+  `uf` tinytext NOT NULL,
+  PRIMARY KEY (`matricula`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `user` varchar(10) NOT NULL,
+  `senha` varchar(100) DEFAULT NULL,
+  `nome` mediumtext,
+  `role` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-08-28 14:42:42
