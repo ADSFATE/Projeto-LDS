@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sun.misc.Request;
 import br.com.plds.model.dao.FabricanteDAO;
 import br.com.plds.model.dao.ModemDAO;
 import br.com.plds.model.dao.TecnicoDAO;
@@ -32,30 +33,28 @@ public class AtribuirModemController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String tipo = request.getParameter("cmbTipo");
 		String numSerie = request.getParameter("txtNserie").trim();
 		String fabricante = request.getParameter("cmbFabricante").trim();
 		String tecnico = request.getParameter("cmbTecnico");
 		String atribuir = request.getParameter("btnAtribuirModem");
 		String matTecnico = tecnico.split("-")[0];
-		
-		if(atribuir != null){
-			
-			ModemDAO mDAO = new ModemDAO();
-			Modem modem = new Modem();
-			modem.setTipo(tipo);
-			modem.setNumeroSerie(numSerie);
-			modem.setFabricante(fabricante);
-			modem.setMatTecnico(matTecnico);
-			try {
+
+		ModemDAO mDAO = new ModemDAO();
+		Modem modem = new Modem();
+		modem.setTipo(tipo);
+		modem.setNumeroSerie(numSerie);
+		modem.setFabricante(fabricante);
+		modem.setMatTecnico(matTecnico);
+		try {
 			mDAO.atribuir(modem);
-			} catch (ClassNotFoundException | SQLException e) {
-				System.out.println(e);
-				e.printStackTrace();
-			}
-			
+		} catch (ClassNotFoundException | SQLException e) {
+			System.out.println(e);
+			e.printStackTrace();
 		}
+
+		// }
 
 	}
 
@@ -97,5 +96,13 @@ public class AtribuirModemController extends HttpServlet {
 		}
 
 	}
-	
+
+	// public ArrayList<Modem> getModensAtribuidosPorTecnico(){
+
+	// ModemDAO mDAO = new ModemDAO();
+	// ArrayList<Modem> modensAtribuidos =
+	// mDAO.getModensAtribuidosPorTecnico(request.)
+
+	// }
+
 }

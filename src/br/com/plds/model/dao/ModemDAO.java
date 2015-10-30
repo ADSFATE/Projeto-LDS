@@ -60,6 +60,7 @@ public class ModemDAO {
 
 		} catch (Exception e) {
 
+			e.printStackTrace();
 			st.close();
 			con.close();
 			return false;
@@ -76,9 +77,13 @@ public class ModemDAO {
 		try {
 
 			con = ConexaoDAO.getConnection();
-			ResultSet rs = con.createStatement().executeQuery(
-					"SELECT id_atribuicao,num_serie,tipo,fabricante,mat_tecnico,data_atribuicao,data_baixado,num_circuito"
-					+ ",rat_frente,raf_verso,status FROM modem where mat_tecnico='" + mat + "'");
+			ResultSet rs = con
+					.createStatement()
+					.executeQuery(
+							"SELECT id_atribuicao,num_serie,tipo,fabricante,mat_tecnico,data_atribuicao,data_baixado,num_circuito"
+									+ ",rat_frente,rat_verso,status FROM atr_modem where mat_tecnico='"
+									+ mat + "' AND status ='ATRIBUIDO'");
+
 			ArrayList<Modem> tipos = new ArrayList<>();
 
 			while (rs.next()) {
@@ -90,7 +95,7 @@ public class ModemDAO {
 				m.setMatTecnico(rs.getString(5));
 				m.setDataAtribuicao(rs.getString(6));
 				m.setDataBaixado(rs.getString(7));
-				m.setNumeroCircuito(rs.getInt(8));
+				m.setNumeroCircuito(rs.getString(8));
 				m.setRatFrente(rs.getString(9));
 				m.setRatVerso(rs.getString(10));
 				m.setStatus(rs.getString(11));
@@ -105,6 +110,37 @@ public class ModemDAO {
 
 			con.close();
 			return null;
+
+		}
+
+	}
+
+	public boolean darBaixa(Modem m) throws ClassNotFoundException,
+			SQLException {
+
+		Connection con = null;
+		PreparedStatement st = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			st = con.prepareStatement("UPDATE atr_modem SET data_baixado = CURRENT_TIMESTAMP,num_circuito = ?,"
+					+ "rat_frente= ?,rat_verso= ?,status='BAIXADO',cliente =? WHERE num_serie =?");
+
+			st.setString(1,m.getNumeroCircuito());
+			st.setString(2, m.getRatFrente());
+			st.setString(3, m.getRatVerso());
+			st.setString(4, m.getCliente());
+			st.setString(5, m.getNumeroSerie());
+			
+			return st.execute();
+
+		} catch (Exception e) {
+
+			st.close();
+			con.close();
+			e.printStackTrace();
+			return false;
 
 		}
 

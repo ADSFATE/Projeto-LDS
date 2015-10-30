@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Painel Principal</title>
+<title>Painel Técnico</title>
 
 <link href="/Responsividade/Bootstrap/css/bootstrap-theme.css" rel="Stylesheet" />
 <link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map" rel="Stylesheet" />
@@ -42,32 +42,28 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modem<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Cadastrar</a></li>
-            <li><a href="atribuirmodem.jsp">Atribuir</a></li>
+            <li><a href="baixarmodem.jsp">Baixar</a></li>
           </ul>
         </li>
         
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Roteador<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Cadastrar</a></li>
-            <li><a href="atribuirmodem.jsp">Atribuir</a></li>
+            <li><a href="#">Baixar</a></li>
           </ul>
         </li>
         
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cabo<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Cadastrar</a></li>
-            <li><a href="atribuirmodem.jsp">Atribuir</a></li>
+            <li><a href="#">Baixar</a></li>
           </ul>
         </li>
         
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gabinete<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Cadastrar</a></li>
-            <li><a href="atribuirmodem.jsp">Atribuir</a></li>
+            <li><a href="#">Baixar</a></li>
           </ul>
         </li>
         

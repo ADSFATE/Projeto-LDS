@@ -13,25 +13,26 @@ public class UsuarioDAO {
 			SQLException {
 
 		Connection cn = ConexaoDAO.getConnection();
-		PreparedStatement ps = cn
-				.prepareStatement("INSERT INTO usuario VALUES(?,?,?)");
+		PreparedStatement ps = cn.prepareStatement("INSERT INTO usuario VALUES(?,?,?,?)");
 
 		try {
 
 			ps.setString(1, usuario.getLogin());
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getNome());
+			ps.setString(4, usuario.getRole());
 
 			if (ps.executeUpdate() == 1) {
 				return true;
 			} else {
 				return false;
 			}
-
+			
 		} catch (Exception e) {
 
 			ps.close();
 			cn.close();
+		//	System.out.println(e);
 			return false;
 
 		}

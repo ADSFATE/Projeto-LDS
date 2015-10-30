@@ -8,11 +8,31 @@ public class Modem {
 	private String fabricante;
 	private String matTecnico;
 	private String dataAtribuicao;
+	private String cliente;
 	private String dataBaixado;
-	private int numeroCircuito;
+	private String numeroCircuito;
+	private String numRat;
+	
+	public String getNumRat() {
+		return numRat;
+	}
+
+	public void setNumRat(String numRat) {
+		this.numRat = numRat;
+	}
+
 	private String ratFrente;
 	private String ratVerso;
 	private String status;
+
+		
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
+	}
 
 	public int getIdAtribuicao() {
 		return idAtribuicao;
@@ -38,11 +58,11 @@ public class Modem {
 		this.dataBaixado = dataBaixado;
 	}
 
-	public int getNumeroCircuito() {
+	public String getNumeroCircuito() {
 		return numeroCircuito;
 	}
 
-	public void setNumeroCircuito(int numeroCircuito) {
+	public void setNumeroCircuito(String numeroCircuito) {
 		this.numeroCircuito = numeroCircuito;
 	}
 

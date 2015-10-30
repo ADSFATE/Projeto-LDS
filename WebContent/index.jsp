@@ -19,10 +19,33 @@
 
 <title>Projeto LDS</title>
 
+<script type="text/javascript">
+	function validarForm() {
+
+		var login = document.forms['formulario']['txtLogin'].value;
+		var senha = document.forms['formulario']['txtSenha'].value;
+
+		if (login == null || login == "") {
+			
+			$("#lbAviso").text("O LOGIN é obrigatório");
+			return false;
+			
+		}
+
+		if (senha == null || senha == "") {
+			
+			$("#lbAviso").text("A SENHA é obrigatória!");
+			return false;
+			
+		}
+
+	}
+</script>
+
 </head>
 <body>
 
-<form action="AutenticacaoController" method="post">
+<form name="formulario" id="formulario" onsubmit="return validarForm();" action="AutenticacaoController" method="post">
 
 <div align="center">
 
@@ -32,9 +55,18 @@
 <span>Login:</span><input type="text" name="txtLogin" placeholder="Seu login">
 <br>
 <br>
-<span>Senha:</span><input type="password" name="txtSenha" placeholder="Sua senha">
+<span>Senha:</span><input type="password" maxlength="6" name="txtSenha" placeholder="Sua senha">
 <br>
+<%if(request.getAttribute("errorMessage") != null){
+	out.print("<span id='lbAviso' style='color:red'>" + request.getAttribute("errorMessage") + "</span><br>");
+	}else{
+		
+		out.print("<span id='lbAviso' style='color:red'></span><br>");
+		
+	} %>
+
 <br>
+
 <input class="btn btn-success" type="submit" value="Entrar" name="btnEntrar">
 
 </div>

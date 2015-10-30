@@ -13,26 +13,28 @@ import br.com.plds.model.dao.UsuarioDAO;
 import br.com.plds.model.vo.Usuario;
 
 /**
- * Servlet implementation class CadastroController
+ * Servlet implementation class CadastrarUsuarioController
  */
-public class CadastroController extends HttpServlet {
+public class CadastrarUsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CadastrarUsuarioController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public CadastroController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String login = request.getParameter("txtLogin");
 		String senha = request.getParameter("txtSenha");
 		String nome = request.getParameter("txtNome");
-
+		
 		Usuario usuario = new Usuario();
 		usuario.setLogin(login);
 		
@@ -45,14 +47,27 @@ public class CadastroController extends HttpServlet {
 		
 		usuario.setPassword(senha);
 		usuario.setNome(nome);
+		usuario.setRole("tecnico");
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
 		try {
-			usuarioDAO.cadastrar(usuario);
+			
+		if(usuarioDAO.cadastrar(usuario)){
+			
+			response.sendRedirect("cadastroRealizado.jsp");
+			
+		}
+		
+		else{
+			// pagina de erro
+
+		}
+		
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 
 }

@@ -55,6 +55,13 @@ public class AutenticacaoController extends HttpServlet {
 				}
 					
 			}
+			else{
+				
+				request.setAttribute("errorMessage","Usuário ou senha incorreto(s)!");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+				
+			}
+			
 			
 		} catch (Exception e) {
 
