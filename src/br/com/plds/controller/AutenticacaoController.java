@@ -24,7 +24,7 @@ public class AutenticacaoController extends HttpServlet {
 		
 		String login = request.getParameter("txtLogin");
 		String senha = request.getParameter("txtSenha");
-		
+				
 		Usuario user = new Usuario();
 		user.setLogin(login);
 		user.setPassword(senha);
@@ -40,6 +40,7 @@ public class AutenticacaoController extends HttpServlet {
 				
 				if(role.equals("supervisor")){
 					
+				//	request.getCookies()[0].setMaxAge(60 * 60 * 24 * 365 * 10);
 					request.getSession().setAttribute("user",login);
 					request.getSession().setAttribute("role","supervisor");
 					request.getRequestDispatcher("painel.jsp").forward(request, response);
@@ -48,6 +49,7 @@ public class AutenticacaoController extends HttpServlet {
 				
 				else if(role.equals("tecnico")){
 					
+				//	request.getCookies()[0].setMaxAge(60 * 60 * 24 * 365 * 10);
 					request.getSession().setAttribute("user",login);
 					request.getSession().setAttribute("role","tecnico");
 					request.getRequestDispatcher("paineltec.jsp").forward(request, response);
