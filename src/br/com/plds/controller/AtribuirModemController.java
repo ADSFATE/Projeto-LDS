@@ -89,7 +89,7 @@ public class AtribuirModemController extends HttpServlet {
 		FabricanteDAO tDAO = new FabricanteDAO();
 
 		try {
-			return tDAO.getFabricantes();
+			return tDAO.getFabricantes("MODEM");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			return null;

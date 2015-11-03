@@ -60,7 +60,7 @@ public class ModemDAO {
 
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			//e.printStackTrace();
 			st.close();
 			con.close();
 			return false;
@@ -125,13 +125,14 @@ public class ModemDAO {
 
 			con = ConexaoDAO.getConnection();
 			st = con.prepareStatement("UPDATE atr_modem SET data_baixado = CURRENT_TIMESTAMP,num_circuito = ?,"
-					+ "rat_frente= ?,rat_verso= ?,status='BAIXADO',cliente =? WHERE num_serie =?");
+					+ "rat_num= ?,rat_frente= ?,rat_verso= ?,status='BAIXADO',cliente =? WHERE num_serie =?");
 
-			st.setString(1,m.getNumeroCircuito());
-			st.setString(2, m.getRatFrente());
-			st.setString(3, m.getRatVerso());
-			st.setString(4, m.getCliente());
-			st.setString(5, m.getNumeroSerie());
+			st.setString(1, m.getNumeroCircuito());
+			st.setString(2, m.getNumRat());
+			st.setString(3, m.getRatFrente());
+			st.setString(4, m.getRatVerso());
+			st.setString(5, m.getCliente());
+			st.setString(6, m.getNumeroSerie());
 			
 			return st.execute();
 
@@ -139,6 +140,7 @@ public class ModemDAO {
 
 			st.close();
 			con.close();
+			System.out.println("erro");
 			e.printStackTrace();
 			return false;
 

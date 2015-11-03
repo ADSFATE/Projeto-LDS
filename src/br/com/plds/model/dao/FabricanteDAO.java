@@ -9,7 +9,7 @@ import br.com.plds.model.vo.Fabricante;
 
 public class FabricanteDAO {
 
-	public ArrayList<Fabricante> getFabricantes() throws ClassNotFoundException,
+	public ArrayList<Fabricante> getFabricantes(String material) throws ClassNotFoundException,
 			SQLException {
 
 		Connection con = null;
@@ -18,7 +18,7 @@ public class FabricanteDAO {
 
 			con = ConexaoDAO.getConnection();
 			ResultSet rs = con.createStatement().executeQuery(
-					"SELECT nome FROM fabricante");
+					"SELECT nome FROM fabricante WHERE material='" + material + "'");
 			ArrayList<Fabricante> tipos = new ArrayList<>();
 
 			while (rs.next()) {

@@ -131,7 +131,7 @@
 						aria-expanded="false">Atribuições<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="atribuirmodem.jsp">Atribuir Modem</a></li>
-							<li><a href="#">Atribuir Roteador</a></li>
+							<li><a href="atribuirroteador.jsp">Atribuir Roteador</a></li>
 							<li><a href="#">Atribuir Gabinete</a></li>
 							<li><a href="#">Atribuir Cabo</a></li>
 						</ul></li>
@@ -208,7 +208,6 @@
 
 		</div>
 
-
 		<div class="form-group">
 
 			<label for="cmbTecnico">Técnico:</label><span style="color: red">*</span><select
@@ -239,7 +238,6 @@
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="button"
 				value="Atribuir Modem" name="btnAtribuirModem" id="btnAtribuirModem">
-
 		</div>
 
 	</form>

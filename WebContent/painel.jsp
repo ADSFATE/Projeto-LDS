@@ -51,7 +51,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Roteador<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Cadastrar</a></li>
-            <li><a href="atribuirmodem.jsp">Atribuir</a></li>
+            <li><a href="atribuirroteador.jsp">Atribuir</a></li>
           </ul>
         </li>
         

@@ -52,37 +52,6 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#btnAtribuirModem').click(function(event) {
-
-			if (!validarForm()) {
-				return;
-			} else {
-
-				var _nserie = $('#cmbNserie').val();
-				var _cliente = $('#txtCliente').val();
-				var _circuito = $('#txtNcircuito').val();
-				var _nrat = $('#txtNRat').val();
-				var _ratFrente = $('#fileRATFrente').val();
-				var _ratVerso = $('#fileRATVerso').val();
-
-				$.post('BaixarModemController', {
-					cmbNserie : _nserie,
-					txtCliente : _serie,
-					txtNcircuito : _circuito,
-					txtNRat : _nrat,
-					fileRATFrente : _ratFrente,
-					fileRATVerso : _ratVerso
-				}, function() {
-					limparCampos();
-					alert('Operação Realizada com Sucesso!');
-				});
-			}
-		});
-	});
-</script>
-
-<script type="text/javascript">
 	function validarForm() {
 
 		var nserie = $('#cmbNserie').val();
@@ -134,6 +103,8 @@
 
 		}
 
+		return true;
+
 	}
 
 	function limpaCampos() {
@@ -153,7 +124,7 @@
 
 	<form name="formulario" id="formulario"
 		onsubmit="return validarForm();" action="BaixarModemController"
-		method="post">
+		enctype="multipart/form-data" method="post">
 
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -217,19 +188,11 @@
 				class="form-control" id="cmbNserie" name="cmbNserie">
 				<option value="" selected="selected" />
 				<%
-				
-				if(request.getSession().getAttribute("user") == null){
-					
-					System.out.println("nulo");
-					
-				}
-				else{
-					System.out.println("ok");
-					
-				}
-					String matTecnico = request.getSession().getAttribute("user").toString();
+					String matTecnico = request.getSession().getAttribute("user")
+							.toString();
 					BaixarModemController amc = new BaixarModemController();
-					ArrayList<Modem> modensDisponiveis = amc.getModemPorTecnico(matTecnico);
+					ArrayList<Modem> modensDisponiveis = amc
+							.getModemPorTecnico(matTecnico);
 
 					for (Modem m : modensDisponiveis) {
 				%>
@@ -251,16 +214,17 @@
 		<div class="form-group">
 
 			<label for="txtCliente">Cliente:</label><span style="color: red">*</span><input
-				class="form-control" type="text" id="txtCliente" autocomplete="off"
-				name="txtCliente" value="" placeholder="Nome do Cliente">
+				class="form-control" maxlength="250" type="text" id="txtCliente"
+				autocomplete="off" name="txtCliente" value=""
+				placeholder="Nome do Cliente">
 
 		</div>
 
 		<div class="form-group">
 
 			<label for="txtNcircuito">Circuito:</label><span style="color: red">*</span>
-			<input class="form-control" type="text" id="txtNcircuito"
-				autocomplete="off" name="txtNcircuito" value=""
+			<input class="form-control" maxlength="20" type="text"
+				id="txtNcircuito" autocomplete="off" name="txtNcircuito" value=""
 				placeholder="Número do circuito">
 
 		</div>
@@ -268,8 +232,8 @@
 		<div class="form-group">
 
 			<label for="txtNRAT">Nº da RAT:</label><span style="color: red">*</span><input
-				class="form-control" type="text" name="txtNRAT" id="txtNRAT"
-				autocomplete="off" value="" placeholder="Número da RAT">
+				class="form-control" maxlength="20" type="text" name="txtNRAT"
+				id="txtNRAT" autocomplete="off" value="" placeholder="Número da RAT">
 
 		</div>
 
@@ -278,7 +242,7 @@
 			<label for="fileRATFrente">Imagem da RAT (Frente):</label><span
 				style="color: red">*</span><input class="btn btn-default btn-file"
 				data-buttonText="Find file" name="fileRATFrente" id="fileRATFrente"
-				type="file" />
+				type="file" accept=".png,.jpg,.jpeg,.bmp,.gif" />
 
 		</div>
 
@@ -287,18 +251,25 @@
 			<label for="fileRATVerso">Imagem da RAT (Verso):</label><span
 				style="color: red">*</span><input class="btn btn-default btn-file"
 				data-buttonText="Find file" name="fileRATVerso" id="fileRATVerso"
-				type="file" />
+				type="file" accept=".png,.jpg,.jpeg,.bmp,.gif" />
 
 		</div>
 
 		<br> <br>
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="submit"
-				value="Baixar Modem" name="btnAtribuirModem"> <br> <br>
+				value="Baixar Modem" name="btnAtribuirModem" id="btnAtribuirModem">
+			<br> <br>
 		</div>
-		
-		<%out.print("<span style='color:red'>" + request.getSession().getAttribute("user") + "</span><br>");%>
-<%out.print("<span style='color:red'>" + request.getSession().getAttribute("role") + "</span><br>");%>
+
+		<%
+			out.print("<span style='color:red'>"
+					+ request.getSession().getAttribute("user") + "</span><br>");
+		%>
+		<%
+			out.print("<span style='color:red'>"
+					+ request.getSession().getAttribute("role") + "</span><br>");
+		%>
 
 	</form>
 
