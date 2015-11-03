@@ -51,7 +51,7 @@ public class BaixarRoteadorController extends HttpServlet {
 			String ratFrente = "";
 			String ratVerso = "";
 
-			String dirConst = UPLOAD_DIRECTORY + File.separator + "modem";
+			String dirConst = UPLOAD_DIRECTORY + File.separator + "roteador";
 			Path dirImages = null;
 
 			List<FileItem> multiparts = new ServletFileUpload(
@@ -121,7 +121,7 @@ public class BaixarRoteadorController extends HttpServlet {
 			m.setRatVerso(ratVerso);
 
 			this.baixarRoteador(m);
-			response.sendRedirect("baixarmodem.jsp");
+			response.sendRedirect("baixarroteador.jsp");
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

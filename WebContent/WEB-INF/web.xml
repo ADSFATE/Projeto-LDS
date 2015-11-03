@@ -38,6 +38,7 @@
   <servlet-mapping>
     <servlet-name>AtribuirModemController</servlet-name>
     <url-pattern>/AtribuirModemController</url-pattern>
+    
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -49,6 +50,29 @@
     <servlet-name>BaixarModemController</servlet-name>
     <url-pattern>/BaixarModemController</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>BaixarRoteadorController</display-name>
+    <servlet-name>BaixarRoteadorController</servlet-name>
+    <servlet-class>br.com.plds.controller.BaixarRoteadorController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaixarRoteadorController</servlet-name>
+    <url-pattern>/BaixarRoteadorController</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>AtribuirRoteadorController</display-name>
+    <servlet-name>AtribuirRoteadorController</servlet-name>
+    <servlet-class>br.com.plds.controller.AtribuirRoteadorController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AtribuirRoteadorController</servlet-name>
+    <url-pattern>/AtribuirRoteadorController</url-pattern>
+  </servlet-mapping>
+  
   <context-param>
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>

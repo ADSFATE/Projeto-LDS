@@ -33,7 +33,7 @@ public class AtribuirRoteadorController extends HttpServlet {
 
 		String tipo = request.getParameter("cmbTipo");
 		String numSerie = request.getParameter("txtNserie").trim();
-		String fabricante = request.getParameter("cmbFabricante").trim();
+		String fabricante = request.getParameter("cmbFabricante");
 		String tecnico = request.getParameter("cmbTecnico");
 		String matTecnico = tecnico.split("-")[0];
 

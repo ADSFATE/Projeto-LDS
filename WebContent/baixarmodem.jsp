@@ -156,7 +156,7 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Roteador<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Baixar</a></li>
+							<li><a href="baixarroteador.jsp">Baixar</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -197,7 +197,7 @@
 					for (Modem m : modensDisponiveis) {
 				%>
 
-				<option value=<%out.print(m.getNumeroSerie());%>>
+				<option value='<%out.print(m.getNumeroSerie());%>'>
 					<%
 						out.print(m.getNumeroSerie());
 					%>

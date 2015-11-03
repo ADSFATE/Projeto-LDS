@@ -156,7 +156,7 @@
 					for (Modem m : tipos) {
 				%>
 
-				<option value=<%out.print(m.getTipo());%>>
+				<option value='<%out.print(m.getTipo());%>'>
 					<%
 						out.print(m.getTipo());
 					%>
@@ -194,7 +194,7 @@
 					for (Fabricante f : fabricantes) {
 				%>
 
-				<option value=<%out.print(f.getNome());%>>
+				<option value='<%out.print(f.getNome());%>'>
 					<%
 						out.print(f.getNome());
 					%>
@@ -219,7 +219,7 @@
 					for (Tecnico t : tecnicos) {
 				%>
 
-				<option value=<%out.print(t.getMatricula() + "-" + t.getNome());%>>
+				<option value='<%out.print(t.getMatricula() + "-" + t.getNome());%>'>
 					<%
 						out.print(t.getMatricula() + "-" + t.getNome());
 					%>

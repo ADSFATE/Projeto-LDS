@@ -123,7 +123,7 @@
 <body>
 
 	<form name="formulario" id="formulario"
-		onsubmit="return validarForm();" action="BaixarModemController"
+		onsubmit="return validarForm();" action="BaixarRoteadorController"
 		enctype="multipart/form-data" method="post">
 
 		<nav class="navbar navbar-inverse">
@@ -197,7 +197,7 @@
 					for (Roteador m : roteadoresDisponiveis) {
 				%>
 
-				<option value=<%out.print(m.getNumeroSerie());%>>
+				<option value='<%out.print(m.getNumeroSerie());%>'>
 					<%
 						out.print(m.getNumeroSerie());
 					%>
