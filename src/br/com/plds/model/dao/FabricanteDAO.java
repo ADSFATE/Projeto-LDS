@@ -1,6 +1,7 @@
 package br.com.plds.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,6 +39,31 @@ public class FabricanteDAO {
 
 		}
 
+	}
+	
+	public boolean cadastrar(Fabricante fab) throws SQLException{
+		
+		Connection con = null;
+		PreparedStatement st = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			st = con.prepareStatement("INSERT INTO fabricante (nome,material) VALUES(?,?)");
+			st.setString(1, fab.getNome());
+			st.setString(2, fab.getMaterial());
+;
+			return st.execute();
+
+		} catch (Exception e) {
+
+			//e.printStackTrace();
+			st.close();
+			con.close();
+			return false;
+
+		}
+		
 	}
 
 }

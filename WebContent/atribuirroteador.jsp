@@ -35,30 +35,28 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#btnAtribuirRoteador').click(function(event) {
-			
-			if(!validarForm()){
-				return;
-			}
-			else{
-				
-			var _tipo = $('#cmbTipo').val();
-			var _numSerie = $('#txtNserie').val();
-			var _fabricante = $('#cmbFabricante').val();
-			var _tecnico = $('#cmbTecnico').val();
 
-			$.post('AtribuirRoteadorController', {
-				cmbTipo : _tipo,
-				txtNserie : _numSerie,
-				cmbFabricante : _fabricante,
-				cmbTecnico : _tecnico
-			}, function() {
-				limparCampos();
-				alert('Material atribuído com Sucesso!');
-			});
-		}});
+			if (!validarForm()) {
+				return;
+			} else {
+
+				var _tipo = $('#cmbTipo').val();
+				var _numSerie = $('#txtNserie').val();
+				var _fabricante = $('#cmbFabricante').val();
+				var _tecnico = $('#cmbTecnico').val();
+
+				$.post('AtribuirRoteadorController', {
+					cmbTipo : _tipo,
+					txtNserie : _numSerie,
+					cmbFabricante : _fabricante,
+					cmbTecnico : _tecnico
+				}, function() {
+					limparCampos();
+					alert('Material atribuído com Sucesso!');
+				});
+			}
+		});
 	});
-	
-	
 </script>
 
 <script type="text/javascript">
@@ -90,7 +88,7 @@
 		}
 
 		return true;
-		
+
 	}
 
 	function limparCampos() {
@@ -108,39 +106,7 @@
 
 	<form name="formulario" id="formulario" role="form" method="post">
 
-		<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-					aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Logo</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Atribuições<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="atribuirmodem.jsp">Atribuir Modem</a></li>
-							<li><a href="atribuirroteador.jsp">Atribuir Roteador</a></li>
-							<li><a href="#">Atribuir Gabinete</a></li>
-							<li><a href="#">Atribuir Cabo</a></li>
-						</ul></li>
-				</ul>
-
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid --> </nav>
+		<%@include file="supMenu.jsp"%>
 
 		<br> <br>
 
@@ -158,7 +124,7 @@
 
 				<option value='<%out.print(m.getTipo());%>'>
 					<%
-						out.print(m.getTipo() );
+						out.print(m.getTipo());
 					%>
 				</option>
 
@@ -236,7 +202,8 @@
 		<br> <br>
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="button"
-				value="Atribuir Roteador" name="btnAtribuirRoteador" id="btnAtribuirRoteador">
+				value="Atribuir Roteador" name="btnAtribuirRoteador"
+				id="btnAtribuirRoteador">
 		</div>
 
 	</form>

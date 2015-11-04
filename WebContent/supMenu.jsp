@@ -4,19 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Painel Principal</title>
+<title></title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css" rel="Stylesheet" media="screen"/>
+<script type="text/javascript">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+.navbar-text img {
+	  max-height:30px;
+	  width:auto;
+	  vertical-align:middle;
+	}
 
+</script>
 </head>
 <body>
 
@@ -71,14 +69,33 @@
           </ul>
         </li>
         
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Materiais<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="listarmateriais.jsp">Listar</a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Técnicos<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="listartecnicos.jsp">Listar</a></li>
+          </ul>
+        </li>
+        
       </ul>
+      
+        <div class="pull-right navbar-text">
+  <img style="max-height:30px;width:auto;vertical-align:middle" src="<%=request.getContextPath()%>/Images/user.png">
+  <%out.print("<span style='color:red'>" + request.getSession().getAttribute("user") + "</span><br>");%>
+</div>
      
-    </div><!-- /.navbar-collapse -->
+   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+    
 </nav>
 
-<%out.print("<span style='color:red'>" + request.getSession().getAttribute("user") + "</span><br>");%>
-<%out.print("<span style='color:red'>" + request.getSession().getAttribute("role") + "</span><br>");%>
+
 
 </form>
 

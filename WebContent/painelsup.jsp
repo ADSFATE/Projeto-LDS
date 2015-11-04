@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Painel Técnico</title>
+<title>Painel Principal</title>
 
 <link href="/Responsividade/Bootstrap/css/bootstrap-theme.css" rel="Stylesheet" />
 <link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map" rel="Stylesheet" />
@@ -22,7 +22,7 @@
 
 <form name="formPainel">
 
-<%@include file="tecMenu.jsp"%>
+<%@include file="supMenu.jsp"%>
 
 </form>
 

@@ -60,7 +60,33 @@ public class ModemDAO {
 
 		} catch (Exception e) {
 
-			//e.printStackTrace();
+			// e.printStackTrace();
+			st.close();
+			con.close();
+			return false;
+
+		}
+
+	}
+
+	public boolean cadastrar(Modem m) throws ClassNotFoundException,
+			SQLException {
+
+		Connection con = null;
+		PreparedStatement st = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			st = con.prepareStatement("INSERT INTO modem (tipo,fabricante) VALUES(?,?)");
+			st.setString(1, m.getTipo());
+			st.setString(2, m.getFabricante());
+
+			return st.execute();
+
+		} catch (Exception e) {
+
+			// e.printStackTrace();
 			st.close();
 			con.close();
 			return false;
@@ -133,7 +159,7 @@ public class ModemDAO {
 			st.setString(4, m.getRatVerso());
 			st.setString(5, m.getCliente());
 			st.setString(6, m.getNumeroSerie());
-			
+
 			return st.execute();
 
 		} catch (Exception e) {

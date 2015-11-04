@@ -60,7 +60,33 @@ public class RoteadorDAO {
 
 		} catch (Exception e) {
 
-			//e.printStackTrace();
+			// e.printStackTrace();
+			st.close();
+			con.close();
+			return false;
+
+		}
+
+	}
+
+	public boolean cadastrar(Roteador roteador) throws ClassNotFoundException,
+			SQLException {
+
+		Connection con = null;
+		PreparedStatement st = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			st = con.prepareStatement("INSERT INTO roteador (tipo,fabricante) VALUES(?,?)");
+			st.setString(1, roteador.getTipo());
+			st.setString(2, roteador.getFabricante());
+
+			return st.execute();
+
+		} catch (Exception e) {
+
+			// e.printStackTrace();
 			st.close();
 			con.close();
 			return false;
@@ -133,7 +159,7 @@ public class RoteadorDAO {
 			st.setString(4, m.getRatVerso());
 			st.setString(5, m.getCliente());
 			st.setString(6, m.getNumeroSerie());
-			
+
 			return st.execute();
 
 		} catch (Exception e) {

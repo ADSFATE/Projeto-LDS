@@ -43,7 +43,7 @@ public class AutenticacaoController extends HttpServlet {
 				//	request.getCookies()[0].setMaxAge(60 * 60 * 24 * 365 * 10);
 					request.getSession().setAttribute("user",login);
 					request.getSession().setAttribute("role","supervisor");
-					request.getRequestDispatcher("painel.jsp").forward(request, response);
+					request.getRequestDispatcher("painelsup.jsp").forward(request, response);
 					
 				}
 				
