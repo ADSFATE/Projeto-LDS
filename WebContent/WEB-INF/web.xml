@@ -116,4 +116,16 @@
     <servlet-name>CadastrarRoteadorController</servlet-name>
     <url-pattern>/CadastrarRoteadorController</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>CadastrarGabineteController</display-name>
+    <servlet-name>CadastrarGabineteController</servlet-name>
+    <servlet-class>br.com.plds.controller.CadastrarGabineteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CadastrarGabineteController</servlet-name>
+    <url-pattern>/CadastrarGabineteController</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

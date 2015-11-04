@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Cadastro de Roteador</title>
+<title>Cadastro de Gabinete</title>
 
 <link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
 	rel="Stylesheet" />
@@ -38,7 +38,7 @@
 				var _fabricante = $('#cmbFabricante').val();
 				var _tipo = $('#txtTipo').val();
 
-				$.post('CadastrarRoteadorController', {
+				$.post('CadastrarGabineteController', {
 					cmbFabricante : _fabricante,
 					txtTipo : _tipo
 				}, function() {
@@ -95,7 +95,7 @@
 
 			<label for="txtTipo">Tipo:</label><span style="color: red">*</span><input
 				class="form-control" maxlength="250" type="text" id="txtTipo"
-				autocomplete="off" name="txtTipo" value="" placeholder="Tipo do Roteador">
+				autocomplete="off" name="txtTipo" value="" placeholder="Tipo do Gabinete">
 
 		</div>
 
@@ -105,7 +105,7 @@
 				class="form-control" id="cmbFabricante" name="cmbFabricante">
 				<option value="" selected="selected" />
 				<%
-					CadastrarRoteadorController amc = new CadastrarRoteadorController();
+					CadastrarGabineteController amc = new CadastrarGabineteController();
 					ArrayList<Fabricante> fabricantes = amc.getFabricantes();
 
 					for (Fabricante f : fabricantes) {
@@ -127,7 +127,7 @@
 		<br> <br>
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="button"
-				value="Cadastrar Roteador" name="btnCadastrar" id="btnCadastrar">
+				value="Cadastrar Gabinete" name="btnCadastrar" id="btnCadastrar">
 			<br> <br>
 		</div>
 
