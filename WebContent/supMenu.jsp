@@ -6,15 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title></title>
 
-<script type="text/javascript">
-
-.navbar-text img {
-	  max-height:30px;
-	  width:auto;
-	  vertical-align:middle;
-	}
-
-</script>
 </head>
 <body>
 
