@@ -61,6 +61,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>BaixarGabineteController</display-name>
+    <servlet-name>BaixarGabineteController</servlet-name>
+    <servlet-class>br.com.plds.controller.BaixarGabineteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaixarGabineteController</servlet-name>
+    <url-pattern>/BaixarGabineteController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>AtribuirRoteadorController</display-name>
     <servlet-name>AtribuirRoteadorController</servlet-name>
     <servlet-class>br.com.plds.controller.AtribuirRoteadorController</servlet-class>
@@ -68,6 +78,16 @@
   <servlet-mapping>
     <servlet-name>AtribuirRoteadorController</servlet-name>
     <url-pattern>/AtribuirRoteadorController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AtribuirGabineteController</display-name>
+    <servlet-name>AtribuirGabineteController</servlet-name>
+    <servlet-class>br.com.plds.controller.AtribuirGabineteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AtribuirGabineteController</servlet-name>
+    <url-pattern>/AtribuirGabineteController</url-pattern>
   </servlet-mapping>
   <context-param>
     <description>Location to store uploaded file</description>
@@ -116,7 +136,6 @@
     <servlet-name>CadastrarRoteadorController</servlet-name>
     <url-pattern>/CadastrarRoteadorController</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>CadastrarGabineteController</display-name>
@@ -126,6 +145,17 @@
   <servlet-mapping>
     <servlet-name>CadastrarGabineteController</servlet-name>
     <url-pattern>/CadastrarGabineteController</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>LogoutController</display-name>
+    <servlet-name>LogoutController</servlet-name>
+    <servlet-class>br.com.plds.controller.LogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutController</servlet-name>
+    <url-pattern>/LogoutController/*</url-pattern>
   </servlet-mapping>
   
 </web-app>

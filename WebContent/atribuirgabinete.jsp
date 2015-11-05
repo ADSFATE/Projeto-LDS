@@ -1,5 +1,5 @@
 <%@page import="br.com.plds.controller.*"%>
-<%@page import="br.com.plds.model.vo.Roteador"%>
+<%@page import="br.com.plds.model.vo.*"%>
 <%@page import="br.com.plds.model.vo.Tecnico"%>
 <%@page import="br.com.plds.model.vo.Fabricante"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Atribuir Roteador</title>
+<title>Atribuir Gabinete</title>
 
 <link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
 	rel="Stylesheet" />
@@ -34,29 +34,30 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#btnAtribuirRoteador').click(function(event) {
-
-			if (!validarForm()) {
+		$('#btnAtribuirGabinete').click(function(event) {
+			
+			if(!validarForm()){
 				return;
-			} else {
-
-				var _tipo = $('#cmbTipo').val();
-				var _numSerie = $('#txtNserie').val();
-				var _fabricante = $('#cmbFabricante').val();
-				var _tecnico = $('#cmbTecnico').val();
-
-				$.post('AtribuirRoteadorController', {
-					cmbTipo : _tipo,
-					txtNserie : _numSerie,
-					cmbFabricante : _fabricante,
-					cmbTecnico : _tecnico
-				}, function() {
-					limparCampos();
-					alert('Material atribuído com Sucesso!');
-				});
 			}
-		});
+			else{
+				
+			var _tipo = $('#cmbTipo').val();
+			var _numSerie = $('#txtNserie').val();
+			var _fabricante = $('#cmbFabricante').val();
+			var _tecnico = $('#cmbTecnico').val();
+
+			$.post('AtribuirGabineteController', {
+				cmbTipo : _tipo,
+				txtNserie : _numSerie,
+				cmbFabricante : _fabricante,
+				cmbTecnico : _tecnico
+			}, function() {
+				limparCampos();
+				alert('Material atribuído com Sucesso!');
+			});
+		}});
 	});
+	
 </script>
 
 <script type="text/javascript">
@@ -88,7 +89,7 @@
 		}
 
 		return true;
-
+		
 	}
 
 	function limparCampos() {
@@ -99,7 +100,6 @@
 		$('#cmbTecnico').val("0");
 
 	}
-	
 </script>
 
 </head>
@@ -117,10 +117,10 @@
 				class="form-control" id="cmbTipo" name="cmbTipo">
 				<option value="" selected="selected" />
 				<%
-					AtribuirRoteadorController amc = new AtribuirRoteadorController();
-					ArrayList<Roteador> tipos = amc.getTiposRoteadores();
+					AtribuirGabineteController amc = new AtribuirGabineteController();
+					ArrayList<Gabinete> tipos = amc.getTiposGabinetes();
 
-					for (Roteador m : tipos) {
+					for (Gabinete m : tipos) {
 				%>
 
 				<option value='<%out.print(m.getTipo());%>'>
@@ -137,6 +137,7 @@
 
 		</div>
 
+
 		<div class="form-group">
 
 			<label for="txtNserie">Nº de Série:</label><span style="color: red">*</span><input
@@ -144,6 +145,7 @@
 				value="" id="txtNserie" name="txtNserie"
 				placeholder="Número de série">
 
+		</div>
 		</div>
 
 
@@ -198,11 +200,10 @@
 
 		</div>
 
-		<br> <br>
+		<br><br>
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="button"
-				value="Atribuir Roteador" name="btnAtribuirRoteador"
-				id="btnAtribuirRoteador">
+				value="Atribuir Gabinete" name="btnAtribuirGabinete" id="btnAtribuirGabinete">
 		</div>
 
 	</form>

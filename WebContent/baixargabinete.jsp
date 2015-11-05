@@ -1,4 +1,4 @@
-<%@page import="br.com.plds.model.vo.Modem"%>
+<%@page import="br.com.plds.model.vo.*"%>
 <%@page import="br.com.plds.controller.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Baixar Modem</title>
+<title>Baixar Gabinete</title>
 
 <link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
 	rel="Stylesheet" />
@@ -123,7 +123,7 @@
 <body>
 
 	<form name="formulario" id="formulario"
-		onsubmit="return validarForm();" action="BaixarModemController"
+		onsubmit="return validarForm();" action="BaixarGabineteController"
 		enctype="multipart/form-data" method="post">
 
 		<%@include file="tecMenu.jsp"%>
@@ -138,11 +138,11 @@
 				<%
 					String matTecnico = request.getSession().getAttribute("user")
 							.toString();
-					BaixarModemController amc = new BaixarModemController();
-					ArrayList<Modem> modensDisponiveis = amc
-							.getModemPorTecnico(matTecnico);
+					BaixarGabineteController amc = new BaixarGabineteController();
+					ArrayList<Gabinete> gabinetesDisponiveis = amc
+							.getGabinetePorTecnico(matTecnico);
 
-					for (Modem m : modensDisponiveis) {
+					for (Gabinete m : gabinetesDisponiveis) {
 				%>
 
 				<option value='<%out.print(m.getNumeroSerie());%>'>
@@ -206,7 +206,7 @@
 		<br> <br>
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="submit"
-				value="Baixar Modem" name="btnAtribuirModem" id="btnAtribuirModem">
+				value="Baixar Gabinete" name="btnAtribuirGabinete" id="btnAtribuirGabinete">
 			<br> <br>
 		</div>
 

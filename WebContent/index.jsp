@@ -80,6 +80,16 @@
 				id="btnEntrar" name="btnEntrar">
 
 		</div>
+		
+						<%
+						out.print("<span style='color:red'>"
+								+ request.getSession().getAttribute("user") + "</span><br>");
+					%>
+					
+							<%
+						out.print("<span style='color:red'>"
+								+ request.getSession().getAttribute("role") + "</span><br>");
+					%>
 
 	</form>
 

@@ -95,7 +95,7 @@ public class GabineteDAO {
 
 	}
 
-	public ArrayList<Gabinete> getModensAtribuidosPorTecnico(String mat)
+	public ArrayList<Gabinete> getGabinetesAtribuidosPorTecnico(String mat)
 			throws ClassNotFoundException, SQLException {
 
 		Connection con = null;

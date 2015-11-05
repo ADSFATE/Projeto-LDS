@@ -6,10 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title></title>
 
+<script type="text/javascript">
+
+function logout(){
+	
+	$.post('LogoutController',null,function t(){window.location.assign('index.jsp');});
+	
+}
+
+
+</script>
+
 </head>
 <body>
-
-	<form name="formPainel">
 
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -77,6 +86,8 @@
 						<ul class="dropdown-menu">
 							<li><a href="listartecnicos.jsp">Listar</a></li>
 						</ul></li>
+						
+						<li><a href="javascript:logout()">Sair</a></li>
 
 				</ul>
 
@@ -85,7 +96,7 @@
 						src="<%=request.getContextPath()%>/Images/user.png">
 					<%
 						out.print("<span style='color:red'>"
-								+ request.getSession().getAttribute("user") + "</span><br>");
+								+ request.getSession().getAttribute("nome") + "</span><br>");
 					%>
 				</div>
 
@@ -93,10 +104,6 @@
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- /.container-fluid --> </nav>
-
-
-
-	</form>
-
+		
 </body>
 </html>

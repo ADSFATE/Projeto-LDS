@@ -1,6 +1,7 @@
 package br.com.plds.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,8 +41,8 @@ public class AutenticacaoController extends HttpServlet {
 				
 				if(role.equals("supervisor")){
 					
-				//	request.getCookies()[0].setMaxAge(60 * 60 * 24 * 365 * 10);
 					request.getSession().setAttribute("user",login);
+					request.getSession().setAttribute("nome",this.primeiroNome(login).toUpperCase());
 					request.getSession().setAttribute("role","supervisor");
 					request.getRequestDispatcher("painelsup.jsp").forward(request, response);
 					
@@ -49,9 +50,9 @@ public class AutenticacaoController extends HttpServlet {
 				
 				else if(role.equals("tecnico")){
 					
-				//	request.getCookies()[0].setMaxAge(60 * 60 * 24 * 365 * 10);
 					request.getSession().setAttribute("user",login);
 					request.getSession().setAttribute("role","tecnico");
+					request.getSession().setAttribute("nome",this.primeiroNome(login));
 					request.getRequestDispatcher("paineltec.jsp").forward(request, response);
 					
 				}
@@ -69,6 +70,21 @@ public class AutenticacaoController extends HttpServlet {
 
 			e.printStackTrace();
 		}
+		
+	}
+	
+	public String primeiroNome(String login){
+		
+		UsuarioDAO uDAO = new UsuarioDAO();
+		try {
+			String[] nome = uDAO.getNomeByUser(login).split(" ");
+			return nome[0];
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
+		
 		
 	}
 
