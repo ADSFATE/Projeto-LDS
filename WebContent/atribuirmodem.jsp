@@ -35,30 +35,28 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#btnAtribuirModem').click(function(event) {
-			
-			if(!validarForm()){
-				return;
-			}
-			else{
-				
-			var _tipo = $('#cmbTipo').val();
-			var _numSerie = $('#txtNserie').val();
-			var _fabricante = $('#cmbFabricante').val();
-			var _tecnico = $('#cmbTecnico').val();
 
-			$.post('AtribuirModemController', {
-				cmbTipo : _tipo,
-				txtNserie : _numSerie,
-				cmbFabricante : _fabricante,
-				cmbTecnico : _tecnico
-			}, function() {
-				limparCampos();
-				alert('Material atribuído com Sucesso!');
-			});
-		}});
+			if (!validarForm()) {
+				return;
+			} else {
+
+				var _tipo = $('#cmbTipo').val();
+				var _numSerie = $('#txtNserie').val();
+				var _fabricante = $('#cmbFabricante').val();
+				var _tecnico = $('#cmbTecnico').val();
+
+				$.post('AtribuirModemController', {
+					cmbTipo : _tipo,
+					txtNserie : _numSerie,
+					cmbFabricante : _fabricante,
+					cmbTecnico : _tecnico
+				}, function() {
+					limparCampos();
+					alert('Material atribuído com Sucesso!');
+				});
+			}
+		});
 	});
-	
-	
 </script>
 
 <script type="text/javascript">
@@ -90,7 +88,7 @@
 		}
 
 		return true;
-		
+
 	}
 
 	function limparCampos() {
@@ -110,103 +108,111 @@
 
 		<%@include file="supMenu.jsp"%>
 
-		<br> <br>
+		<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Atribuição de Modem</div>
+					<div class="panel-body"></div>
 
-		<div class="form-group">
+					<div class="form-group">
 
-			<label for="tipo">Tipo:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbTipo" name="cmbTipo">
-				<option value="" selected="selected" />
-				<%
-					AtribuirModemController amc = new AtribuirModemController();
-					ArrayList<Modem> tipos = amc.getTiposModens();
+						<label for="tipo">Tipo:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbTipo" name="cmbTipo">
+							<option value="" selected="selected" />
+							<%
+								AtribuirModemController amc = new AtribuirModemController();
+								ArrayList<Modem> tipos = amc.getTiposModens();
 
-					for (Modem m : tipos) {
-				%>
+								for (Modem m : tipos) {
+							%>
 
-				<option value='<%out.print(m.getTipo());%>'>
-					<%
-						out.print(m.getTipo());
-					%>
-				</option>
+							<option value='<%out.print(m.getTipo());%>'>
+								<%
+									out.print(m.getTipo());
+								%>
+							</option>
 
-				<%
-					}
-				%>
+							<%
+								}
+							%>
 
-			</select>
+						</select>
 
-		</div>
-
-
-		<div class="form-group">
-
-			<label for="txtNserie">Nº de Série:</label><span style="color: red">*</span><input
-				class="form-control" type="text" maxlength="20" autocomplete="off"
-				value="" id="txtNserie" name="txtNserie"
-				placeholder="Número de série">
-
-		</div>
-		</div>
+					</div>
 
 
-		<div class="form-group">
+					<div class="form-group">
+
+						<label for="txtNserie">Nº de Série:</label><span
+							style="color: red">*</span><input class="form-control"
+							type="text" maxlength="20" autocomplete="off" value=""
+							id="txtNserie" name="txtNserie" placeholder="Número de série">
+
+					</div>
+
+					<div class="form-group">
 
 
-			<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbFabricante" name="cmbFabricante">
-				<option value="" selected="selected" />
-				<%
-					ArrayList<Fabricante> fabricantes = amc.getFabricantes();
+						<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbFabricante" name="cmbFabricante">
+							<option value="" selected="selected" />
+							<%
+								ArrayList<Fabricante> fabricantes = amc.getFabricantes();
 
-					for (Fabricante f : fabricantes) {
-				%>
+								for (Fabricante f : fabricantes) {
+							%>
 
-				<option value='<%out.print(f.getNome());%>'>
-					<%
-						out.print(f.getNome());
-					%>
-				</option>
+							<option value='<%out.print(f.getNome());%>'>
+								<%
+									out.print(f.getNome());
+								%>
+							</option>
 
-				<%
-					}
-				%>
+							<%
+								}
+							%>
 
-			</select>
+						</select>
 
-		</div>
+					</div>
 
-		<div class="form-group">
+					<div class="form-group">
 
-			<label for="cmbTecnico">Técnico:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbTecnico" name="cmbTecnico">
-				<option value="" selected="selected" />
-				<%
-					ArrayList<Tecnico> tecnicos = amc.getTecnicos();
+						<label for="cmbTecnico">Técnico:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbTecnico" name="cmbTecnico">
+							<option value="" selected="selected" />
+							<%
+								ArrayList<Tecnico> tecnicos = amc.getTecnicos();
 
-					for (Tecnico t : tecnicos) {
-				%>
+								for (Tecnico t : tecnicos) {
+							%>
 
-				<option value='<%out.print(t.getMatricula() + "-" + t.getNome());%>'>
-					<%
-						out.print(t.getMatricula() + "-" + t.getNome());
-					%>
-				</option>
+							<option
+								value='<%out.print(t.getMatricula() + "-" + t.getNome());%>'>
+								<%
+									out.print(t.getMatricula() + "-" + t.getNome());
+								%>
+							</option>
 
-				<%
-					}
-				%>
+							<%
+								}
+							%>
 
-			</select>
+						</select>
 
-		</div>
-		
-		</div>
+					</div>
 
-		<br><br>
-		<div align="center">
-			<input class="btn btn-success btn-lg" type="button"
-				value="Atribuir Modem" name="btnAtribuirModem" id="btnAtribuirModem">
+					<br>
+					<br>
+					<div align="center">
+						<input class="btn btn-success btn-lg" type="button"
+							value="Atribuir Modem" name="btnAtribuirModem"
+							id="btnAtribuirModem">
+
+					</div>
+					<br>
+				</div>
+			</div>
 		</div>
 
 	</form>

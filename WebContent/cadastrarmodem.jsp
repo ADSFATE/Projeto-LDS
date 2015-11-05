@@ -89,46 +89,54 @@
 
 		<%@include file="supMenu.jsp"%>
 
-		<div class="form-group">
+		<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Cadastro de Modem</div>
+					<div class="panel-body"></div>
 
-			<label for="txtTipo">Tipo:</label><span style="color: red">*</span><input
-				class="form-control" maxlength="250" type="text" id="txtTipo"
-				autocomplete="off" name="txtTipo" value=""
-				placeholder="Tipo do Modem">
+					<div class="form-group">
 
-		</div>
+						<label for="txtTipo">Tipo:</label><span style="color: red">*</span><input
+							class="form-control" maxlength="250" type="text" id="txtTipo"
+							autocomplete="off" name="txtTipo" value=""
+							placeholder="Tipo do Modem">
 
-		<div class="form-group">
+					</div>
 
+					<div class="form-group">
 
-			<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbFabricante" name="cmbFabricante">
-				<option value="" selected="selected" />
-				<%
-					CadastrarModemController amc = new CadastrarModemController();
-					ArrayList<Fabricante> fabricantes = amc.getFabricantes();
+						<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbFabricante" name="cmbFabricante">
+							<option value="" selected="selected" />
+							<%
+								CadastrarModemController amc = new CadastrarModemController();
+								ArrayList<Fabricante> fabricantes = amc.getFabricantes();
 
-					for (Fabricante f : fabricantes) {
-				%>
+								for (Fabricante f : fabricantes) {
+							%>
 
-				<option value='<%out.print(f.getNome());%>'>
-					<%
-						out.print(f.getNome());
-					%>
-				</option>
+							<option value='<%out.print(f.getNome());%>'>
+								<%
+									out.print(f.getNome());
+								%>
+							</option>
 
-				<%
-					}
-				%>
+							<%
+								}
+							%>
 
-			</select>
+						</select>
 
-		</div>
-		<br> <br>
-		<div align="center">
-			<input class="btn btn-success btn-lg" type="button"
-				value="Cadastrar Modem" name="btnCadastrar" id="btnCadastrar">
-			<br> <br>
+					</div>
+					<br> <br>
+					<div align="center">
+						<input class="btn btn-success btn-lg" type="button"
+							value="Cadastrar Modem" name="btnCadastrar" id="btnCadastrar">
+					</div>
+					<br>
+				</div>
+			</div>
 		</div>
 
 	</form>

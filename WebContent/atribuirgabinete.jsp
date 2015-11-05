@@ -109,7 +109,11 @@
 
 		<%@include file="supMenu.jsp"%>
 
-		<br> <br>
+		<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Atribuição de Gabinete</div>
+					<div class="panel-body"></div>
 
 		<div class="form-group">
 
@@ -146,7 +150,7 @@
 				placeholder="Número de série">
 
 		</div>
-		</div>
+	
 
 
 		<div class="form-group">
@@ -204,6 +208,10 @@
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="button"
 				value="Atribuir Gabinete" name="btnAtribuirGabinete" id="btnAtribuirGabinete">
+		</div>
+		<br>
+		</div>
+		</div>
 		</div>
 
 	</form>

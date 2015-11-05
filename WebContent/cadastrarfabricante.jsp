@@ -87,6 +87,12 @@ $(document).ready(function() {
 	<form name="formulario" id="formulario" method="post">
 
 		<%@include file="supMenu.jsp"%>
+		
+				<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Cadastro de Fabricante</div>
+					<div class="panel-body"></div>
 
 		<div class="form-group">
 
@@ -115,7 +121,10 @@ $(document).ready(function() {
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="button"
 				value="Cadastrar Fabricante" name="btnCadastrar" id="btnCadastrar">
-			<br> <br>
+		</div>
+		<br>
+		</div>
+		</div>
 		</div>
 
 	</form>

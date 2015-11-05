@@ -128,7 +128,11 @@
 
 		<%@include file="tecMenu.jsp"%>
 
-		<br>
+				<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Baixa de Roteador</div>
+					<div class="panel-body"></div>
 
 		<div class="form-group">
 
@@ -136,6 +140,11 @@
 				class="form-control" id="cmbNserie" name="cmbNserie">
 				<option value="" selected="selected" />
 				<%
+				
+				if(request.getSession().getAttribute("user") == null){
+					response.sendRedirect("index.jsp");
+					return;
+				}
 					String matTecnico = request.getSession().getAttribute("user")
 							.toString();
 					BaixarRoteadorController amc = new BaixarRoteadorController();
@@ -209,15 +218,10 @@
 				value="Baixar Modem" name="btnAtribuirRoteador"
 				id="btnAtribuirRoteador"> <br> <br>
 		</div>
-
-		<%
-			out.print("<span style='color:red'>"
-					+ request.getSession().getAttribute("user") + "</span><br>");
-		%>
-		<%
-			out.print("<span style='color:red'>"
-					+ request.getSession().getAttribute("role") + "</span><br>");
-		%>
+		<br>
+		</div>
+		</div>
+		</div>
 
 	</form>
 

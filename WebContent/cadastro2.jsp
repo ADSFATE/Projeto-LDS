@@ -30,6 +30,36 @@
 </head>
 
 <script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('#btnCadastrar').click(function(event) {
+		
+		if(!validarForm()){
+			return;
+		}
+		else{
+			
+		var _nome = $('#txtNome').val();
+		var _uf = $('#cmbUF').val();
+		var _login = $('#txtLogin').val();
+		var _senha = $('#txtSenha').val();
+
+		$.post('CadastrarUsuarioController', {
+			txtNome : _nome,
+			cmbUF : _uf,
+			txtLogin : _login,
+			txtSenha : _senha
+		}, function() {
+			limparCampos();
+			alert('Cadastro Realizado!');
+		});
+	}});
+});
+
+</script>
+
+<script type="text/javascript">
 	function validarForm() {
 
 		var nome = $('#txtNome').val();
@@ -43,7 +73,7 @@
 			return false;
 
 		}
-		
+
 		if (uf == null | uf == "") {
 
 			alert("A UF é obrigatória!");
@@ -68,20 +98,28 @@
 		return true;
 
 	}
+	
+	function limparCampos(){
+		
+		$('#txtNome').val("");
+		$('#cmbUF').val("0");
+		$('#txtLogin').val("");
+		$('#txtSenha').val("");
+		
+	}
 </script>
 
 <body>
 
 	<form name="formulario" id="formulario"
-		onsubmit="return validarForm();" action="CadastrarUsuarioController"
 		method="POST" role="form">
 
+		<%@include file="supMenu.jsp"%>
+
 		<div class="container">
-			<h2>Cadastro de Usuário</h2>
-			<p>Informe suas informações corporativas</p>
 			<div class="panel-group">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Dados</div>
+					<div class="panel-heading">Cadastro de Técnico</div>
 					<div class="panel-body"></div>
 
 					<div class='form-group'>
@@ -89,16 +127,16 @@
 							name="txtNome" id="txtNome" autocomplete="off"
 							placeholder="Nome Completo" required>
 					</div>
-					
+
 					<div class='form-group'>
-						<span>UF:</span><select
-				class="form-control" id="cmbUF" name="cmbUF">
-				<option value="" selected></option>
-				<option value="CE">CE</option>
-				<option value="MA">MA</option>
-				<option value="PI">PI</option>
-				</select>
-				
+						<span>UF:</span><select class="form-control" id="cmbUF"
+							name="cmbUF">
+							<option value="" selected></option>
+							<option value="CE">CE</option>
+							<option value="MA">MA</option>
+							<option value="PI">PI</option>
+						</select>
+
 					</div>
 
 					<div class='form-group'>
@@ -113,9 +151,8 @@
 							placeholder="Sua senha (6 digitos)" required> <br>
 
 						<div align="center">
-							<input class="btn btn-success btn-lg" type="submit"
-								value="Cadastrar" name="btnCadastrar"> <br> <br>
-							<a href="index.jsp" class="text-center new-account">Voltar</a>
+							<input class="btn btn-success btn-lg" type="button"
+								value="Cadastrar" name="btnCadastrar" id="btnCadastrar"> <br> <br>
 						</div>
 
 					</div>

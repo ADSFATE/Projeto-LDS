@@ -14,7 +14,6 @@ function logout(){
 	
 }
 
-
 </script>
 
 </head>
@@ -84,6 +83,7 @@ function logout(){
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Técnicos<span class="caret"></span></a>
 						<ul class="dropdown-menu">
+							<li><a href="cadastro2.jsp">Cadastrar</a></li>
 							<li><a href="listartecnicos.jsp">Listar</a></li>
 						</ul></li>
 						

@@ -128,7 +128,11 @@
 
 		<%@include file="tecMenu.jsp"%>
 
-		<br>
+				<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Baixa de Modem</div>
+					<div class="panel-body"></div>
 
 		<div class="form-group">
 
@@ -136,6 +140,7 @@
 				class="form-control" id="cmbNserie" name="cmbNserie">
 				<option value="" selected="selected" />
 				<%
+
 					String matTecnico = request.getSession().getAttribute("user")
 							.toString();
 					BaixarModemController amc = new BaixarModemController();
@@ -207,7 +212,10 @@
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="submit"
 				value="Baixar Modem" name="btnAtribuirModem" id="btnAtribuirModem">
-			<br> <br>
+		</div>
+		<br>
+		</div>
+		</div>
 		</div>
 
 	</form>

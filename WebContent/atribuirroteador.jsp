@@ -99,7 +99,6 @@
 		$('#cmbTecnico').val("0");
 
 	}
-	
 </script>
 
 </head>
@@ -109,100 +108,110 @@
 
 		<%@include file="supMenu.jsp"%>
 
-		<br> <br>
+		<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Atribuição de Roteador</div>
+					<div class="panel-body"></div>
 
-		<div class="form-group">
+					<div class="form-group">
 
-			<label for="tipo">Tipo:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbTipo" name="cmbTipo">
-				<option value="" selected="selected" />
-				<%
-					AtribuirRoteadorController amc = new AtribuirRoteadorController();
-					ArrayList<Roteador> tipos = amc.getTiposRoteadores();
+						<label for="tipo">Tipo:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbTipo" name="cmbTipo">
+							<option value="" selected="selected" />
+							<%
+								AtribuirRoteadorController amc = new AtribuirRoteadorController();
+								ArrayList<Roteador> tipos = amc.getTiposRoteadores();
 
-					for (Roteador m : tipos) {
-				%>
+								for (Roteador m : tipos) {
+							%>
 
-				<option value='<%out.print(m.getTipo());%>'>
-					<%
-						out.print(m.getTipo());
-					%>
-				</option>
+							<option value='<%out.print(m.getTipo());%>'>
+								<%
+									out.print(m.getTipo());
+								%>
+							</option>
 
-				<%
-					}
-				%>
+							<%
+								}
+							%>
 
-			</select>
+						</select>
 
-		</div>
+					</div>
 
-		<div class="form-group">
+					<div class="form-group">
 
-			<label for="txtNserie">Nº de Série:</label><span style="color: red">*</span><input
-				class="form-control" type="text" maxlength="20" autocomplete="off"
-				value="" id="txtNserie" name="txtNserie"
-				placeholder="Número de série">
+						<label for="txtNserie">Nº de Série:</label><span
+							style="color: red">*</span><input class="form-control"
+							type="text" maxlength="20" autocomplete="off" value=""
+							id="txtNserie" name="txtNserie" placeholder="Número de série">
 
-		</div>
-
-
-		<div class="form-group">
+					</div>
 
 
-			<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbFabricante" name="cmbFabricante">
-				<option value="" selected="selected" />
-				<%
-					ArrayList<Fabricante> fabricantes = amc.getFabricantes();
+					<div class="form-group">
 
-					for (Fabricante f : fabricantes) {
-				%>
 
-				<option value='<%out.print(f.getNome());%>'>
-					<%
-						out.print(f.getNome());
-					%>
-				</option>
+						<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbFabricante" name="cmbFabricante">
+							<option value="" selected="selected" />
+							<%
+								ArrayList<Fabricante> fabricantes = amc.getFabricantes();
 
-				<%
-					}
-				%>
+								for (Fabricante f : fabricantes) {
+							%>
 
-			</select>
+							<option value='<%out.print(f.getNome());%>'>
+								<%
+									out.print(f.getNome());
+								%>
+							</option>
 
-		</div>
+							<%
+								}
+							%>
 
-		<div class="form-group">
+						</select>
 
-			<label for="cmbTecnico">Técnico:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbTecnico" name="cmbTecnico">
-				<option value="" selected="selected" />
-				<%
-					ArrayList<Tecnico> tecnicos = amc.getTecnicos();
+					</div>
 
-					for (Tecnico t : tecnicos) {
-				%>
+					<div class="form-group">
 
-				<option value='<%out.print(t.getMatricula() + "-" + t.getNome());%>'>
-					<%
-						out.print(t.getMatricula() + "-" + t.getNome());
-					%>
-				</option>
+						<label for="cmbTecnico">Técnico:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbTecnico" name="cmbTecnico">
+							<option value="" selected="selected" />
+							<%
+								ArrayList<Tecnico> tecnicos = amc.getTecnicos();
 
-				<%
-					}
-				%>
+								for (Tecnico t : tecnicos) {
+							%>
 
-			</select>
+							<option
+								value='<%out.print(t.getMatricula() + "-" + t.getNome());%>'>
+								<%
+									out.print(t.getMatricula() + "-" + t.getNome());
+								%>
+							</option>
 
-		</div>
+							<%
+								}
+							%>
 
-		<br> <br>
-		<div align="center">
-			<input class="btn btn-success btn-lg" type="button"
-				value="Atribuir Roteador" name="btnAtribuirRoteador"
-				id="btnAtribuirRoteador">
+						</select>
+
+					</div>
+
+					<br> <br>
+					<div align="center">
+						<input class="btn btn-success btn-lg" type="button"
+							value="Atribuir Roteador" name="btnAtribuirRoteador"
+							id="btnAtribuirRoteador">
+					</div>
+					<br>
+				</div>
+				<
+			</div>
 		</div>
 
 	</form>
