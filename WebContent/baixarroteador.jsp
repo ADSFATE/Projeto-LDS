@@ -9,19 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Baixar Modem</title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css"
-	rel="Stylesheet" />
-
 <style type="text/css">
 .btn-file {
 	position: relative;
@@ -222,6 +209,8 @@
 		</div>
 		</div>
 		</div>
+		
+		<%@include file="footer.jsp"%>
 
 	</form>
 

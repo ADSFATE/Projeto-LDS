@@ -13,24 +13,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Atribuir Modem</title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css"
-	rel="Stylesheet" />
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -56,6 +45,21 @@
 				});
 			}
 		});
+
+		$('#cmbTipo').change(function(event) {
+
+			var _nserie = $('#cmbTipo').val();
+			$.post('BuscarFabricanteController', {
+				cmbNserie : _nserie,
+				especie : "MODEM"
+			}, function(data) {
+				setTimeout(function() {
+					$("#cmbFabricante").val(data)
+				}, 1000)
+
+			});
+		});
+
 	});
 </script>
 
@@ -152,27 +156,10 @@
 
 					<div class="form-group">
 
-
-						<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
-							class="form-control" id="cmbFabricante" name="cmbFabricante">
-							<option value="" selected="selected" />
-							<%
-								ArrayList<Fabricante> fabricantes = amc.getFabricantes();
-
-								for (Fabricante f : fabricantes) {
-							%>
-
-							<option value='<%out.print(f.getNome());%>'>
-								<%
-									out.print(f.getNome());
-								%>
-							</option>
-
-							<%
-								}
-							%>
-
-						</select>
+						<label for="cmbFabricante">Fabricante:</label><span
+							style="color: red">*</span><input class="form-control"
+							type="text" readonly autocomplete="off" value=""
+							id="cmbFabricante" name="cmbFabricante" placeholder="">
 
 					</div>
 
@@ -202,8 +189,7 @@
 
 					</div>
 
-					<br>
-					<br>
+					<br> <br>
 					<div align="center">
 						<input class="btn btn-success btn-lg" type="button"
 							value="Atribuir Modem" name="btnAtribuirModem"
@@ -214,6 +200,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<%@include file="footer.jsp"%>
 
 	</form>
 

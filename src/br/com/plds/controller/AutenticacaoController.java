@@ -41,9 +41,15 @@ public class AutenticacaoController extends HttpServlet {
 				
 				if(role.equals("supervisor")){
 					
-					request.getSession().setAttribute("user",login);
-					request.getSession().setAttribute("nome",this.primeiroNome(login).toUpperCase());
+					request.getSession().setAttribute("user",login);				
 					request.getSession().setAttribute("role","supervisor");
+					String nomeCompleto = "";
+					String [] nome = this.nomeUsuario(login);
+					for(int i =0;i<= nome.length-1;i++ ){
+						nomeCompleto+= " " + nome[i];
+					}
+					request.getSession().setAttribute("nome",nome[0]);
+					request.getSession().setAttribute("nome_completo",nomeCompleto.trim());
 					request.getRequestDispatcher("painelsup.jsp").forward(request, response);
 					
 				}
@@ -52,7 +58,13 @@ public class AutenticacaoController extends HttpServlet {
 					
 					request.getSession().setAttribute("user",login);
 					request.getSession().setAttribute("role","tecnico");
-					request.getSession().setAttribute("nome",this.primeiroNome(login));
+					String nomeCompleto = "";
+					String [] nome = this.nomeUsuario(login);
+					for(int i =0;i<= nome.length-1;i++ ){
+						nomeCompleto+= " " + nome[i];
+					}
+					request.getSession().setAttribute("nome",nome[0]);
+					request.getSession().setAttribute("nome_completo",nomeCompleto.trim());
 					request.getRequestDispatcher("paineltec.jsp").forward(request, response);
 					
 				}
@@ -73,19 +85,17 @@ public class AutenticacaoController extends HttpServlet {
 		
 	}
 	
-	public String primeiroNome(String login){
+	public String[] nomeUsuario(String login){
 		
 		UsuarioDAO uDAO = new UsuarioDAO();
 		try {
-			String[] nome = uDAO.getNomeByUser(login).split(" ");
-			return nome[0];
+			return uDAO.getNomeByUser(login).split(" ");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "";
+			return null;
 		}
-		
-		
+			
 	}
 
 }

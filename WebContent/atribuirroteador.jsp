@@ -13,19 +13,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Atribuir Roteador</title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css"
-	rel="Stylesheet" />
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -56,6 +43,21 @@
 				});
 			}
 		});
+		
+		$('#cmbTipo').change(function(event) {
+
+			var _nserie = $('#cmbTipo').val();
+			$.post('BuscarFabricanteController', {
+				cmbNserie : _nserie,
+				especie : "ROTEADOR"
+			}, function(data) {
+				setTimeout(function() {
+					$("#cmbFabricante").val(data)
+				}, 1000)
+
+			});
+		});
+		
 	});
 </script>
 
@@ -152,27 +154,10 @@
 
 					<div class="form-group">
 
-
-						<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
-							class="form-control" id="cmbFabricante" name="cmbFabricante">
-							<option value="" selected="selected" />
-							<%
-								ArrayList<Fabricante> fabricantes = amc.getFabricantes();
-
-								for (Fabricante f : fabricantes) {
-							%>
-
-							<option value='<%out.print(f.getNome());%>'>
-								<%
-									out.print(f.getNome());
-								%>
-							</option>
-
-							<%
-								}
-							%>
-
-						</select>
+						<label for="cmbFabricante">Fabricante:</label><span
+							style="color: red">*</span><input class="form-control"
+							type="text" readonly autocomplete="off" value=""
+							id="cmbFabricante" name="cmbFabricante" placeholder="">
 
 					</div>
 
@@ -215,6 +200,8 @@
 		</div>
 
 	</form>
+	
+	<%@include file="footer.jsp"%>
 
 </body>
 

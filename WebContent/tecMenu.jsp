@@ -4,14 +4,45 @@
 <meta charset="ISO-8859-1">
 <title></title>
 
-<script type="text/javascript">
-
-function logout(){
-	
-	$.post('LogoutController',null,function t(){window.location.assign('index.jsp');});
-	
+<style type="text/css">
+.navbar-login {
+	width: 305px;
+	padding: 10px;
+	padding-bottom: 0px;
 }
 
+.navbar-login-session {
+	padding: 10px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+.navbar-footer {
+	background-color: #DDD;
+}
+
+.navbar-footer-content {
+	padding: 15px 15px 15px 15px;
+}
+
+.dropdown-menu {
+	padding: 0px;
+	overflow: hidden;
+}
+
+.icon-size {
+	font-size: 87px;
+}
+</style>
+
+<script type="text/javascript">
+	function logout() {
+
+		$.post('LogoutController', null, function t() {
+			window.location.assign('index.jsp');
+		});
+
+	}
 </script>
 
 </head>
@@ -65,18 +96,61 @@ function logout(){
 						<ul class="dropdown-menu">
 							<li><a href="baixargabinete.jsp">Baixar</a></li>
 						</ul></li>
-						
-					<li><a href="javascript:logout()">Sair</a></li>
 
 				</ul>
 
-				<div class="pull-right navbar-text">
-					<img style="max-height: 30px; width: auto; vertical-align: middle"
-						src="<%=request.getContextPath()%>/Images/user.png">
-					<%
-						out.print("<span style='color:red'>"
-								+ request.getSession().getAttribute("nome") + "</span><br>");
-					%>
+				<div class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
+							<strong>
+								<%
+									out.print(request.getSession().getAttribute("nome"));
+								%>
+						</strong> <span class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="navbar-login">
+									<div class="row">
+										<div class="col-lg-4">
+											<p class="text-center">
+												<span class="glyphicon glyphicon-user icon-size"></span>
+											</p>
+										</div>
+										<div class="col-lg-8">
+											<p class="text-left">
+												<strong>
+													<%
+														out.print(request.getSession().getAttribute("user"));
+													%>
+												</strong>
+											</p>
+											<p class="text-left small">
+												<%
+													out.print(request.getSession().getAttribute("role"));
+												%>
+											</p>
+											<p class="text-left">
+												<button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#myModal">Perfil</button>
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="divider navbar-login-session-bg"></li>
+							<li class="navbar-login-session-bg">
+								<div class="navbar-login navbar-login-session">
+									<div class="row">
+										<div class="col-lg-12">
+											<p>
+												<a href="javascript:logout()"
+													class="btn btn-danger btn-block">Sair</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul></li>
 				</div>
 
 			</div>
@@ -84,6 +158,28 @@ function logout(){
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+	
+	<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Perfil</h4>
+      </div>
+      <div class="modal-body">
+        <p><strong>Nome: </strong><%out.print(request.getSession().getAttribute("nome_completo"));%></p>
+        <p><strong>Tipo: </strong><%out.print(request.getSession().getAttribute("role"));%></p>
+        <p><strong>Login: </strong><%out.print(request.getSession().getAttribute("user"));%></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 </body>
 </html>

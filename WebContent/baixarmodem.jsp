@@ -9,19 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Baixar Modem</title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css"
-	rel="Stylesheet" />
-
 <style type="text/css">
 .btn-file {
 	position: relative;
@@ -128,95 +115,100 @@
 
 		<%@include file="tecMenu.jsp"%>
 
-				<div class="container">
+		<div class="container">
 			<div class="panel-group">
 				<div class="panel panel-primary">
 					<div class="panel-heading">Baixa de Modem</div>
 					<div class="panel-body"></div>
 
-		<div class="form-group">
+					<div class="form-group">
+					
+						<label for="tipo">Nº de Série:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbNserie" name="cmbNserie">
+							<option value="" selected="selected" />
+							<%
+								String matTecnico = request.getSession().getAttribute("user")
+										.toString();
+								BaixarModemController amc = new BaixarModemController();
+								ArrayList<Modem> modensDisponiveis = amc
+										.getModemPorTecnico(matTecnico);
 
-			<label for="tipo">Nº de Série:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbNserie" name="cmbNserie">
-				<option value="" selected="selected" />
-				<%
+								for (Modem m : modensDisponiveis) {
+							%>
 
-					String matTecnico = request.getSession().getAttribute("user")
-							.toString();
-					BaixarModemController amc = new BaixarModemController();
-					ArrayList<Modem> modensDisponiveis = amc
-							.getModemPorTecnico(matTecnico);
+							<option value='<%out.print(m.getNumeroSerie());%>'>
+								<%
+									out.print(m.getNumeroSerie());
+								%>
+							</option>
 
-					for (Modem m : modensDisponiveis) {
-				%>
+							<%
+								}
+							%>
 
-				<option value='<%out.print(m.getNumeroSerie());%>'>
-					<%
-						out.print(m.getNumeroSerie());
-					%>
-				</option>
+						</select>
 
-				<%
-					}
-				%>
+					</div>
 
-			</select>
+					<div class="form-group">
 
+						<label for="txtCliente">Cliente:</label><span style="color: red">*</span><input
+							class="form-control" maxlength="250" type="text" id="txtCliente"
+							autocomplete="off" name="txtCliente" value=""
+							placeholder="Nome do Cliente">
+
+					</div>
+
+					<div class="form-group">
+
+						<label for="txtNcircuito">Circuito:</label><span
+							style="color: red">*</span> <input class="form-control"
+							maxlength="20" type="text" id="txtNcircuito" autocomplete="off"
+							name="txtNcircuito" value="" placeholder="Número do circuito">
+
+					</div>
+
+					<div class="form-group">
+
+						<label for="txtNRAT">Nº da RAT:</label><span style="color: red">*</span><input
+							class="form-control" maxlength="20" type="text" name="txtNRAT"
+							id="txtNRAT" autocomplete="off" value=""
+							placeholder="Número da RAT">
+
+					</div>
+
+					<div class="form-group">
+
+						<label for="fileRATFrente">Imagem da RAT (Frente):</label><span
+							style="color: red">*</span><input
+							class="btn btn-default btn-file" data-buttonText="Find file"
+							name="fileRATFrente" id="fileRATFrente" type="file"
+							accept=".png,.jpg,.jpeg,.bmp,.gif" />
+
+					</div>
+
+					<div class="form-group">
+
+						<label for="fileRATVerso">Imagem da RAT (Verso):</label><span
+							style="color: red">*</span><input
+							class="btn btn-default btn-file" data-buttonText="Find file"
+							name="fileRATVerso" id="fileRATVerso" type="file"
+							accept=".png,.jpg,.jpeg,.bmp,.gif" />
+
+					</div>
+
+					<br> <br>
+					<div align="center">
+						<input class="btn btn-success btn-lg" type="submit"
+							value="Baixar Modem" name="btnAtribuirModem"
+							id="btnAtribuirModem">
+					</div>
+					<br>
+				</div>
+			</div>
 		</div>
-
-		<div class="form-group">
-
-			<label for="txtCliente">Cliente:</label><span style="color: red">*</span><input
-				class="form-control" maxlength="250" type="text" id="txtCliente"
-				autocomplete="off" name="txtCliente" value=""
-				placeholder="Nome do Cliente">
-
-		</div>
-
-		<div class="form-group">
-
-			<label for="txtNcircuito">Circuito:</label><span style="color: red">*</span>
-			<input class="form-control" maxlength="20" type="text"
-				id="txtNcircuito" autocomplete="off" name="txtNcircuito" value=""
-				placeholder="Número do circuito">
-
-		</div>
-
-		<div class="form-group">
-
-			<label for="txtNRAT">Nº da RAT:</label><span style="color: red">*</span><input
-				class="form-control" maxlength="20" type="text" name="txtNRAT"
-				id="txtNRAT" autocomplete="off" value="" placeholder="Número da RAT">
-
-		</div>
-
-		<div class="form-group">
-
-			<label for="fileRATFrente">Imagem da RAT (Frente):</label><span
-				style="color: red">*</span><input class="btn btn-default btn-file"
-				data-buttonText="Find file" name="fileRATFrente" id="fileRATFrente"
-				type="file" accept=".png,.jpg,.jpeg,.bmp,.gif" />
-
-		</div>
-
-		<div class="form-group">
-
-			<label for="fileRATVerso">Imagem da RAT (Verso):</label><span
-				style="color: red">*</span><input class="btn btn-default btn-file"
-				data-buttonText="Find file" name="fileRATVerso" id="fileRATVerso"
-				type="file" accept=".png,.jpg,.jpeg,.bmp,.gif" />
-
-		</div>
-
-		<br> <br>
-		<div align="center">
-			<input class="btn btn-success btn-lg" type="submit"
-				value="Baixar Modem" name="btnAtribuirModem" id="btnAtribuirModem">
-		</div>
-		<br>
-		</div>
-		</div>
-		</div>
+		
+		<%@include file="footer.jsp"%>
 
 	</form>
 

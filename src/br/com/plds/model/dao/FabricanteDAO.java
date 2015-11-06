@@ -10,8 +10,8 @@ import br.com.plds.model.vo.Fabricante;
 
 public class FabricanteDAO {
 
-	public ArrayList<Fabricante> getFabricantes(String material) throws ClassNotFoundException,
-			SQLException {
+	public ArrayList<Fabricante> getFabricantes(String material)
+			throws ClassNotFoundException, SQLException {
 
 		Connection con = null;
 
@@ -19,7 +19,8 @@ public class FabricanteDAO {
 
 			con = ConexaoDAO.getConnection();
 			ResultSet rs = con.createStatement().executeQuery(
-					"SELECT nome FROM fabricante WHERE material='" + material + "'");
+					"SELECT nome FROM fabricante WHERE material='" + material
+							+ "'");
 			ArrayList<Fabricante> tipos = new ArrayList<>();
 
 			while (rs.next()) {
@@ -40,9 +41,57 @@ public class FabricanteDAO {
 		}
 
 	}
-	
-	public boolean cadastrar(Fabricante fab) throws SQLException{
-		
+
+	public String getFabricantesPorMaterial(String tipo,String especie)
+			throws ClassNotFoundException, SQLException {
+
+		Connection con = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			
+			String query = "";
+			
+			switch(especie){
+			
+			case "MODEM":
+				query = "SELECT fabricante FROM modem WHERE tipo='" + tipo + "'";
+			break;
+			case "ROTEADOR":
+				query = "SELECT fabricante FROM roteador WHERE tipo='" + tipo + "'";
+				break;
+			case "GABINETE":
+				query = "SELECT fabricante FROM gabinete WHERE tipo='" + tipo + "'";
+				break;
+			case "CABO":
+				query = "SELECT fabricante FROM cabo WHERE tipo='" + tipo + "'";
+				break;
+			
+			}
+			
+			ResultSet rs = con.createStatement().executeQuery(query);
+			String fab = "";
+
+			while (rs.next()) {
+				fab = rs.getString(1);
+			}
+
+			return fab;
+
+		}
+
+		catch (Exception e) {
+
+			con.close();
+			return null;
+
+		}
+
+	}
+
+	public boolean cadastrar(Fabricante fab) throws SQLException {
+
 		Connection con = null;
 		PreparedStatement st = null;
 
@@ -52,18 +101,18 @@ public class FabricanteDAO {
 			st = con.prepareStatement("INSERT INTO fabricante (nome,material) VALUES(?,?)");
 			st.setString(1, fab.getNome());
 			st.setString(2, fab.getMaterial());
-;
+			;
 			return st.execute();
 
 		} catch (Exception e) {
 
-			//e.printStackTrace();
+			// e.printStackTrace();
 			st.close();
 			con.close();
 			return false;
 
 		}
-		
+
 	}
 
 }

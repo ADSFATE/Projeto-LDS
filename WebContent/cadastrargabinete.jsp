@@ -9,18 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cadastro de Gabinete</title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css"
-	rel="Stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -138,6 +126,7 @@
 				</div>
 			</div>
 		</div>
+		<%@include file="footer.jsp"%>
 
 	</form>
 

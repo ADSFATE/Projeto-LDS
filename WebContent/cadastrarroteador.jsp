@@ -9,18 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cadastro de Roteador</title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css"
-	rel="Stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -89,47 +77,56 @@
 
 		<%@include file="supMenu.jsp"%>
 
-		<br> <br>
+		<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Atribuição de Modem</div>
+					<div class="panel-body"></div>
 
-		<div class="form-group">
+					<div class="form-group">
 
-			<label for="txtTipo">Tipo:</label><span style="color: red">*</span><input
-				class="form-control" maxlength="250" type="text" id="txtTipo"
-				autocomplete="off" name="txtTipo" value="" placeholder="Tipo do Roteador">
+						<label for="txtTipo">Tipo:</label><span style="color: red">*</span><input
+							class="form-control" maxlength="250" type="text" id="txtTipo"
+							autocomplete="off" name="txtTipo" value=""
+							placeholder="Tipo do Roteador">
 
+					</div>
+
+					<div class="form-group">
+
+						<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbFabricante" name="cmbFabricante">
+							<option value="" selected="selected" />
+							<%
+								CadastrarRoteadorController amc = new CadastrarRoteadorController();
+								ArrayList<Fabricante> fabricantes = amc.getFabricantes();
+
+								for (Fabricante f : fabricantes) {
+							%>
+
+							<option value='<%out.print(f.getNome());%>'>
+								<%
+									out.print(f.getNome());
+								%>
+							</option>
+
+							<%
+								}
+							%>
+
+						</select>
+
+					</div>
+					<br> <br>
+					<div align="center">
+						<input class="btn btn-success btn-lg" type="button"
+							value="Cadastrar Roteador" name="btnCadastrar" id="btnCadastrar">
+					</div>
+					<br>
+				</div>
+			</div>
 		</div>
-
-		<div class="form-group">
-
-			<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbFabricante" name="cmbFabricante">
-				<option value="" selected="selected" />
-				<%
-					CadastrarRoteadorController amc = new CadastrarRoteadorController();
-					ArrayList<Fabricante> fabricantes = amc.getFabricantes();
-
-					for (Fabricante f : fabricantes) {
-				%>
-
-				<option value='<%out.print(f.getNome());%>'>
-					<%
-						out.print(f.getNome());
-					%>
-				</option>
-
-				<%
-					}
-				%>
-
-			</select>
-
-		</div>
-		<br> <br>
-		<div align="center">
-			<input class="btn btn-success btn-lg" type="button"
-				value="Cadastrar Roteador" name="btnCadastrar" id="btnCadastrar">
-			<br> <br>
-		</div>
+		<%@include file="footer.jsp"%>
 
 	</form>
 

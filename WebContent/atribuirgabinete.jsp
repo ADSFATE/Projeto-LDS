@@ -13,19 +13,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Atribuir Gabinete</title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map"
-	rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css"
-	rel="Stylesheet" />
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -35,29 +22,43 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#btnAtribuirGabinete').click(function(event) {
-			
-			if(!validarForm()){
-				return;
-			}
-			else{
-				
-			var _tipo = $('#cmbTipo').val();
-			var _numSerie = $('#txtNserie').val();
-			var _fabricante = $('#cmbFabricante').val();
-			var _tecnico = $('#cmbTecnico').val();
 
-			$.post('AtribuirGabineteController', {
-				cmbTipo : _tipo,
-				txtNserie : _numSerie,
-				cmbFabricante : _fabricante,
-				cmbTecnico : _tecnico
-			}, function() {
-				limparCampos();
-				alert('Material atribuído com Sucesso!');
+			if (!validarForm()) {
+				return;
+			} else {
+
+				var _tipo = $('#cmbTipo').val();
+				var _numSerie = $('#txtNserie').val();
+				var _fabricante = $('#cmbFabricante').val();
+				var _tecnico = $('#cmbTecnico').val();
+
+				$.post('AtribuirGabineteController', {
+					cmbTipo : _tipo,
+					txtNserie : _numSerie,
+					cmbFabricante : _fabricante,
+					cmbTecnico : _tecnico
+				}, function() {
+					limparCampos();
+					alert('Material atribuído com Sucesso!');
+				});
+			}
+		});
+
+		$('#cmbTipo').change(function(event) {
+
+			var _nserie = $('#cmbTipo').val();
+			$.post('BuscarFabricanteController', {
+				cmbNserie : _nserie,
+				especie : "GABINETE"
+			}, function(data) {
+				setTimeout(function() {
+					$("#cmbFabricante").val(data)
+				}, 1000)
+
 			});
-		}});
+		});
+
 	});
-	
 </script>
 
 <script type="text/javascript">
@@ -89,7 +90,7 @@
 		}
 
 		return true;
-		
+
 	}
 
 	function limparCampos() {
@@ -115,105 +116,91 @@
 					<div class="panel-heading">Atribuição de Gabinete</div>
 					<div class="panel-body"></div>
 
-		<div class="form-group">
+					<div class="form-group">
 
-			<label for="tipo">Tipo:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbTipo" name="cmbTipo">
-				<option value="" selected="selected" />
-				<%
-					AtribuirGabineteController amc = new AtribuirGabineteController();
-					ArrayList<Gabinete> tipos = amc.getTiposGabinetes();
+						<label for="tipo">Tipo:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbTipo" name="cmbTipo">
+							<option value="" selected="selected" />
+							<%
+								AtribuirGabineteController amc = new AtribuirGabineteController();
+								ArrayList<Gabinete> tipos = amc.getTiposGabinetes();
 
-					for (Gabinete m : tipos) {
-				%>
+								for (Gabinete m : tipos) {
+							%>
 
-				<option value='<%out.print(m.getTipo());%>'>
-					<%
-						out.print(m.getTipo());
-					%>
-				</option>
+							<option value='<%out.print(m.getTipo());%>'>
+								<%
+									out.print(m.getTipo());
+								%>
+							</option>
 
-				<%
-					}
-				%>
+							<%
+								}
+							%>
 
-			</select>
+						</select>
 
+					</div>
+
+
+					<div class="form-group">
+
+						<label for="txtNserie">Nº de Série:</label><span
+							style="color: red">*</span><input class="form-control"
+							type="text" maxlength="20" autocomplete="off" value=""
+							id="txtNserie" name="txtNserie" placeholder="Número de série">
+
+					</div>
+
+
+
+					<div class="form-group">
+
+						<label for="cmbFabricante">Fabricante:</label><span
+							style="color: red">*</span><input class="form-control"
+							type="text" readonly autocomplete="off" value=""
+							id="cmbFabricante" name="cmbFabricante" placeholder="">
+
+					</div>
+
+					<div class="form-group">
+
+						<label for="cmbTecnico">Técnico:</label><span style="color: red">*</span><select
+							class="form-control" id="cmbTecnico" name="cmbTecnico">
+							<option value="" selected="selected" />
+							<%
+								ArrayList<Tecnico> tecnicos = amc.getTecnicos();
+
+								for (Tecnico t : tecnicos) {
+							%>
+
+							<option
+								value='<%out.print(t.getMatricula() + "-" + t.getNome());%>'>
+								<%
+									out.print(t.getMatricula() + "-" + t.getNome());
+								%>
+							</option>
+
+							<%
+								}
+							%>
+
+						</select>
+
+					</div>
+
+					<br>
+					<br>
+					<div align="center">
+						<input class="btn btn-success btn-lg" type="button"
+							value="Atribuir Gabinete" name="btnAtribuirGabinete"
+							id="btnAtribuirGabinete">
+					</div>
+					<br>
+				</div>
+			</div>
 		</div>
-
-
-		<div class="form-group">
-
-			<label for="txtNserie">Nº de Série:</label><span style="color: red">*</span><input
-				class="form-control" type="text" maxlength="20" autocomplete="off"
-				value="" id="txtNserie" name="txtNserie"
-				placeholder="Número de série">
-
-		</div>
-	
-
-
-		<div class="form-group">
-
-
-			<label for="tipo">Fabricante:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbFabricante" name="cmbFabricante">
-				<option value="" selected="selected" />
-				<%
-					ArrayList<Fabricante> fabricantes = amc.getFabricantes();
-
-					for (Fabricante f : fabricantes) {
-				%>
-
-				<option value='<%out.print(f.getNome());%>'>
-					<%
-						out.print(f.getNome());
-					%>
-				</option>
-
-				<%
-					}
-				%>
-
-			</select>
-
-		</div>
-
-		<div class="form-group">
-
-			<label for="cmbTecnico">Técnico:</label><span style="color: red">*</span><select
-				class="form-control" id="cmbTecnico" name="cmbTecnico">
-				<option value="" selected="selected" />
-				<%
-					ArrayList<Tecnico> tecnicos = amc.getTecnicos();
-
-					for (Tecnico t : tecnicos) {
-				%>
-
-				<option value='<%out.print(t.getMatricula() + "-" + t.getNome());%>'>
-					<%
-						out.print(t.getMatricula() + "-" + t.getNome());
-					%>
-				</option>
-
-				<%
-					}
-				%>
-
-			</select>
-
-		</div>
-
-		<br><br>
-		<div align="center">
-			<input class="btn btn-success btn-lg" type="button"
-				value="Atribuir Gabinete" name="btnAtribuirGabinete" id="btnAtribuirGabinete">
-		</div>
-		<br>
-		</div>
-		</div>
-		</div>
-
+<%@include file="footer.jsp"%>
 	</form>
 
 </body>

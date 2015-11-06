@@ -6,13 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Painel Técnico</title>
 
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.css.map" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap-theme.min.css" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.css.map" rel="Stylesheet" />
-<link href="/Responsividade/Bootstrap/css/bootstrap.min.css" rel="Stylesheet" media="screen"/>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -23,6 +16,15 @@
 <form name="formPainel">
 
 <%@include file="tecMenu.jsp"%>
+
+<h1>Indicadores aqui</h1>
+<h2>Indicadores aqui</h2>
+<h3>Indicadores aqui</h3>
+<h4>Indicadores aqui</h4>
+<h5>Indicadores aqui</h5>
+<h6>Indicadores aqui</h6>
+
+<%@include file="footer.jsp"%>
 
 </form>
 

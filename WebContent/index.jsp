@@ -7,18 +7,6 @@
 <meta name="viewport"
 	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
 
-<link href="/Projeto LDS/Bootstrap/css/bootstrap-theme.css"
-	rel="Stylesheet" />
-<link href="/Projeto LDS/Bootstrap/css/bootstrap-theme.css.map"
-	rel="Stylesheet" />
-<link href="/Projeto LDS/Bootstrap/css/bootstrap-theme.min.css"
-	rel="Stylesheet" />
-<link href="/Projeto LDS/Bootstrap/css/bootstrap.css" rel="Stylesheet" />
-<link href="/Projeto LDS/Bootstrap/css/bootstrap.css.map"
-	rel="Stylesheet" />
-<link href="/Projeto LDS/Bootstrap/css/bootstrap.min.css"
-	rel="Stylesheet" media="screen" />
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
