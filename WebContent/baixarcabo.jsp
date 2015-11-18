@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Baixar Roteador</title>
+<title>Baixar Cabo</title>
 
 <style type="text/css">
 .btn-file {
@@ -110,7 +110,7 @@
 <body>
 
 	<form name="formulario" id="formulario"
-		onsubmit="return validarForm();" action="BaixarRoteadorController"
+		onsubmit="return validarForm();" action="BaixarCaboController"
 		enctype="multipart/form-data" method="post">
 
 		<%@include file="tecMenu.jsp"%>
@@ -118,7 +118,7 @@
 				<div class="container">
 			<div class="panel-group">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Baixa de Roteador</div>
+					<div class="panel-heading">Baixa de Cabo</div>
 					<div class="panel-body"></div>
 
 		<div class="form-group">
@@ -134,11 +134,11 @@
 				}
 					String matTecnico = request.getSession().getAttribute("user")
 							.toString();
-					BaixarRoteadorController amc = new BaixarRoteadorController();
-					ArrayList<Roteador> roteadoresDisponiveis = amc
-							.getRoteadorPorTecnico(matTecnico);
+					BaixarCaboController amc = new BaixarCaboController();
+					ArrayList<Cabo> cabosDisponiveis = amc
+							.getCaboPorTecnico(matTecnico);
 
-					for (Roteador m : roteadoresDisponiveis) {
+					for (Cabo m : cabosDisponiveis) {
 				%>
 
 				<option value='<%out.print(m.getNumeroSerie());%>'>
@@ -202,8 +202,8 @@
 		<br> <br>
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="submit"
-				value="Baixar Modem" name="btnAtribuirRoteador"
-				id="btnAtribuirRoteador"> <br> <br>
+				value="Baixar Cabo" name="btnAtribuirCabo"
+				id="btnAtribuirCabo"> <br> <br>
 		</div>
 		<br>
 		</div>

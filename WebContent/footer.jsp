@@ -7,49 +7,42 @@
 <title></title>
 
 	<style>
-        html, body {
-            height: 100%;
-        }
-        footer {
-            color: #666;
-            background: #222;
-            padding: 17px 0 18px 0;
-            border-top: 1px solid #000;
-        }
-        footer a {
-            color: #999;
-        }
-        footer a:hover {
-            color: #efefef;
-        }
-        .wrapper {
-            min-height: 100%;
-            height: auto !important;
-            height: 100%;
-            margin: 0 auto -63px;
-        }
-        .push {
-            height: 63px;
-        }
-        /* not required for sticky footer; just pushes hero down a bit */
-        .wrapper > .container {
-            padding-top: 60px;
-        }
-    </style>
+
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: 0px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 100px;
+  
+}
+.site-footer {
+  background: black;
+}
+
+</style>
 
 </head>
 <body>
 
-	<footer>
-	<div class="container">
-		<div align="center">
-			<p>
-				Laboratório de Desenvolvimentos de Sistemas - FATE.
-			</p>
-		</div>
-	</div>
-	</footer>
+	<div class="page-wrap">
+  
+</div>
 
+<footer align="center" class="site-footer">
+  ©Laboratório de Desenvolvimento de Sistemas - Todos os direitos reservados ® 2015
+</footer>
 
 </body>
 </html>

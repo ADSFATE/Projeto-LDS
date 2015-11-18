@@ -94,8 +94,8 @@ overflow: hidden;
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Cabo<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Cadastrar</a></li>
-						<li><a href="#">Atribuir</a></li>
+						<li><a href="cadastrarcabo.jsp">Cadastrar</a></li>
+						<li><a href="atribuircabo.jsp">Atribuir</a></li>
 					</ul></li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"

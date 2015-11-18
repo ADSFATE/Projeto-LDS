@@ -19,16 +19,16 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 
-import br.com.plds.model.dao.GabineteDAO;
-import br.com.plds.model.vo.Gabinete;
+import br.com.plds.model.dao.CaboDAO;
+import br.com.plds.model.vo.Cabo;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 maxFileSize = 1024 * 1024 * 10, // 10MB
 maxRequestSize = 1024 * 1024 * 50)
-public class BaixarGabineteController extends HttpServlet {
+public class BaixarCaboController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BaixarGabineteController() {
+	public BaixarCaboController() {
 		super();
 
 	}
@@ -47,7 +47,7 @@ public class BaixarGabineteController extends HttpServlet {
 			String ratFrente = "";
 			String ratVerso = "";
 
-			String dirConst = UPLOAD_DIRECTORY + File.separator + "gabinete";
+			String dirConst = UPLOAD_DIRECTORY + File.separator + "cabo";
 			Path dirImages = null;
 
 			List<FileItem> multiparts = new ServletFileUpload(
@@ -108,7 +108,7 @@ public class BaixarGabineteController extends HttpServlet {
 				}
 			}
 
-			Gabinete m = new Gabinete();
+			Cabo m = new Cabo();
 			m.setNumeroSerie(nserie);
 			m.setCliente(cliente);
 			m.setNumeroCircuito(circuito);
@@ -116,8 +116,8 @@ public class BaixarGabineteController extends HttpServlet {
 			m.setRatFrente(ratFrente);
 			m.setRatVerso(ratVerso);
 
-			this.baixarGabinete(m);
-			response.sendRedirect("baixargabinete.jsp");
+			this.baixarCabo(m);
+			response.sendRedirect("baixarcabo.jsp");
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -125,12 +125,12 @@ public class BaixarGabineteController extends HttpServlet {
 
 	}
 
-	public ArrayList<Gabinete> getGabinetePorTecnico(String mat) {
+	public ArrayList<Cabo> getCaboPorTecnico(String mat) {
 
-		GabineteDAO mDAO = new GabineteDAO();
+		CaboDAO mDAO = new CaboDAO();
 
 		try {
-			return mDAO.getGabinetesAtribuidosPorTecnico(mat);
+			return mDAO.getCaboAtribuidosPorTecnico(mat);
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
@@ -140,9 +140,9 @@ public class BaixarGabineteController extends HttpServlet {
 
 	}
 
-	public boolean baixarGabinete(Gabinete m) {
+	public boolean baixarCabo(Cabo m) {
 
-		GabineteDAO mDAO = new GabineteDAO();
+		CaboDAO mDAO = new CaboDAO();
 		try {
 			return mDAO.darBaixa(m);
 		} catch (ClassNotFoundException | SQLException e) {

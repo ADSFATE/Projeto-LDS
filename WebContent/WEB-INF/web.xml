@@ -146,6 +146,40 @@
     <servlet-name>CadastrarGabineteController</servlet-name>
     <url-pattern>/CadastrarGabineteController</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>AtribuirCaboController</display-name>
+    <servlet-name>AtribuirCaboController</servlet-name>
+    <servlet-class>br.com.plds.controller.AtribuirCaboController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AtribuirCaboController</servlet-name>
+    <url-pattern>/AtribuirCaboController</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>CadastrarCaboController</display-name>
+    <servlet-name>CadastrarCaboController</servlet-name>
+    <servlet-class>br.com.plds.controller.CadastrarCaboController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CadastrarCaboController</servlet-name>
+    <url-pattern>/CadastrarCaboController</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>BaixarCaboController</display-name>
+    <servlet-name>BaixarCaboController</servlet-name>
+    <servlet-class>br.com.plds.controller.BaixarCaboController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaixarCaboController</servlet-name>
+    <url-pattern>/BaixarCaboController</url-pattern>
+  </servlet-mapping>
+ 
   <servlet>
     <description></description>
     <display-name>LogoutController</display-name>
@@ -167,10 +201,12 @@
     <url-pattern>/cadastrargabinete.jsp</url-pattern>
     <url-pattern>/cadastrarroteador.jsp</url-pattern>
     <url-pattern>/cadastrarmodem.jsp</url-pattern>
+    <url-pattern>/cadastrarcabo.jsp</url-pattern>
     <url-pattern>/cadastro2.jsp</url-pattern>
     <url-pattern>/atribuirmodem.jsp</url-pattern>
     <url-pattern>/atribuirgabinete.jsp</url-pattern>
     <url-pattern>/atribuirroteador.jsp</url-pattern>
+     <url-pattern>/atribuircabo.jsp</url-pattern>
     <url-pattern>/listarmateriais.jsp</url-pattern>
     <url-pattern>/listartecnicos.jsp</url-pattern>
   </filter-mapping>
