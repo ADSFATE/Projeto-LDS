@@ -5,7 +5,14 @@ public class Material {
 	String tipo;
 	String fabricante;
 	String especie;
+	int quantidade;
 	
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 	public String getTipo() {
 		return tipo;
 	}
@@ -24,7 +31,6 @@ public class Material {
 	public void setEspecie(String especie) {
 		this.especie = especie;
 	}
-	
 	
 
 }

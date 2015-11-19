@@ -88,7 +88,7 @@
 						<label for="txtTipo">Tipo:</label><span style="color: red">*</span><input
 							class="form-control" maxlength="250" type="text" id="txtTipo"
 							autocomplete="off" name="txtTipo" value=""
-							placeholder="Tipo do Gabinete">
+							placeholder="Tipo do Cabo">
 
 					</div>
 

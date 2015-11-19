@@ -16,5 +16,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/joao.oliveira/Downloads/commons-fileupload-1.3.1-bin/commons-fileupload-1.3.1-bin/lib/commons-fileupload-1.3.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/joao.oliveira/Downloads/commons-io-2.4-bin/commons-io-2.4/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/joao.oliveira/Downloads/gson-2.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

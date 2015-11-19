@@ -19,7 +19,11 @@ public class MaterialDAO {
 			ResultSet rs = con.createStatement().executeQuery(
 					"SELECT tipo, fabricante, 'Modem' AS Especie FROM modem "
 					+ "UNION ALL "
-					+ "SELECT tipo, fabricante, 'Roteador' AS Especie FROM roteador");
+					+ "SELECT tipo, fabricante, 'Roteador' AS Especie FROM roteador "
+					+ "UNION ALL "
+					+ "SELECT tipo, fabricante, 'Gabinete' AS Especie FROM gabinete "
+					+ "UNION ALL "
+					+ "SELECT tipo, fabricante, 'Cabo' AS Especie FROM cabo ");
 			
 			ArrayList<Material> materiais = new ArrayList<>();
 
@@ -43,5 +47,82 @@ public class MaterialDAO {
 		}
 		
 	}
+	
+	public ArrayList<Material> getcontagemMateriais() throws SQLException{
+		
+		Connection con = null;
 
+		try {
+
+			con = ConexaoDAO.getConnection();
+			ResultSet rs = con.createStatement().executeQuery(
+					" SELECT 'Modem' as label, count(*) as value from atr_modem " +
+					"union all" +
+					" SELECT 'Roteador' as label, count(*) as value from atr_roteador " +
+					"union all" + 
+					" SELECT 'Gabinete', count(*) as value from atr_gabinete " + 
+					"union all" +
+					" SELECT 'Cabo', count(*) as value from atr_cabo");
+			
+			ArrayList<Material> materiais = new ArrayList<>();
+
+			while (rs.next()) {
+				Material m = new Material();
+				m.setTipo(rs.getString(1));
+				m.setQuantidade(rs.getInt(2));
+				materiais.add(m);
+			}
+
+			return materiais;
+
+		}
+
+		catch (Exception e) {
+
+			con.close();
+			return null;
+
+		}
+		
+	}
+
+	
+	public ArrayList<Material> getcontagemMateriaisAtribuidos() throws SQLException{
+		
+		Connection con = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			ResultSet rs = con.createStatement().executeQuery(
+					" SELECT 'Modem' AS label, COUNT(*) as value from atr_modem WHERE status = 'ATRIBUIDO'" +
+					"union all" +
+					" SELECT 'Roteador' as label, count(*) as value from atr_roteador " +
+					"union all" + 
+					" SELECT 'Gabinete', count(*) as value from atr_gabinete " + 
+					"union all" +
+					" SELECT 'Cabo', count(*) as value from atr_cabo");
+			
+			ArrayList<Material> materiais = new ArrayList<>();
+
+			while (rs.next()) {
+				Material m = new Material();
+				m.setTipo(rs.getString(1));
+				m.setQuantidade(rs.getInt(2));
+				materiais.add(m);
+			}
+
+			return materiais;
+
+		}
+
+		catch (Exception e) {
+
+			con.close();
+			return null;
+
+		}
+		
+	}
+	
 }

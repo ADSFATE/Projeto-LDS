@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.plds.model.bo.AutenticacaoBO;
+import br.com.plds.model.dao.MaterialDAO;
 import br.com.plds.model.dao.UsuarioDAO;
 import br.com.plds.model.vo.Usuario;
+
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class AutenticacaoController
@@ -32,6 +35,15 @@ public class AutenticacaoController extends HttpServlet {
 		
 		AutenticacaoBO aut = new AutenticacaoBO();
 		UsuarioDAO uDAO = new UsuarioDAO();
+		MaterialDAO mDAO = new MaterialDAO();
+		String totalMateriaisAtribuidos = "";
+				
+		try {
+			totalMateriaisAtribuidos = new Gson().toJson(mDAO.getcontagemMateriais());
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
 			
@@ -50,6 +62,11 @@ public class AutenticacaoController extends HttpServlet {
 					}
 					request.getSession().setAttribute("nome",nome[0]);
 					request.getSession().setAttribute("nome_completo",nomeCompleto.trim());
+					
+					totalMateriaisAtribuidos = totalMateriaisAtribuidos.replace("tipo","label");
+					totalMateriaisAtribuidos = totalMateriaisAtribuidos.replace("quantidade","value");
+					request.getSession().setAttribute("total_mat_atr",totalMateriaisAtribuidos);
+					
 					request.getRequestDispatcher("painelsup.jsp").forward(request, response);
 					
 				}
