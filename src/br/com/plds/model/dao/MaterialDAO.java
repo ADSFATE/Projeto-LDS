@@ -95,13 +95,51 @@ public class MaterialDAO {
 
 			con = ConexaoDAO.getConnection();
 			ResultSet rs = con.createStatement().executeQuery(
-					" SELECT 'Modem' AS label, COUNT(*) as value from atr_modem WHERE status = 'ATRIBUIDO'" +
+					" SELECT 'Modem' AS label, COUNT(*) AS value FROM atr_modem WHERE status = 'ATRIBUIDO'" +
 					"union all" +
-					" SELECT 'Roteador' as label, count(*) as value from atr_roteador " +
+					" SELECT 'Roteador' AS label, COUNT(*) AS value FROM atr_roteador WHERE status = 'ATRIBUIDO'" +
 					"union all" + 
-					" SELECT 'Gabinete', count(*) as value from atr_gabinete " + 
+					" SELECT 'Gabinete' AS label, COUNT(*) AS value FROM atr_gabinete WHERE status = 'ATRIBUIDO'" + 
 					"union all" +
-					" SELECT 'Cabo', count(*) as value from atr_cabo");
+					" SELECT 'Cabo' AS label, COUNT(*) AS value FROM atr_cabo WHERE status = 'ATRIBUIDO'");
+			
+			ArrayList<Material> materiais = new ArrayList<>();
+
+			while (rs.next()) {
+				Material m = new Material();
+				m.setTipo(rs.getString(1));
+				m.setQuantidade(rs.getInt(2));
+				materiais.add(m);
+			}
+
+			return materiais;
+
+		}
+
+		catch (Exception e) {
+
+			con.close();
+			return null;
+
+		}
+		
+	}
+	
+	public ArrayList<Material> getcontagemMateriaisBaixados() throws SQLException{
+		
+		Connection con = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			ResultSet rs = con.createStatement().executeQuery(
+					" SELECT 'Modem' AS label, COUNT(*) AS value FROM atr_modem WHERE status = 'BAIXADO'" +
+					"union all" +
+					" SELECT 'Roteador' AS label, COUNT(*) AS value FROM atr_roteador WHERE status = 'BAIXADO'" +
+					"union all" + 
+					" SELECT 'Gabinete' AS label, COUNT(*) AS value FROM atr_gabinete WHERE status = 'BAIXADO'" + 
+					"union all" +
+					" SELECT 'Cabo' AS label, COUNT(*) AS value FROM atr_cabo WHERE status = 'BAIXADO'");
 			
 			ArrayList<Material> materiais = new ArrayList<>();
 

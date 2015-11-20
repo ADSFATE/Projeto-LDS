@@ -49,7 +49,6 @@ public class AtribuirGabineteController extends HttpServlet {
 		try {
 			mDAO.atribuir(gab);
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e);
 			e.printStackTrace();
 		}
 

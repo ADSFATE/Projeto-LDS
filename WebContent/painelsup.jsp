@@ -76,7 +76,7 @@ FusionCharts.ready(function () {
                 "canvasBgColor": "#ffffff"
             },
 
-            "data":<%out.print(request.getSession().getAttribute("teste"));%>
+            "data":<%out.print(request.getSession().getAttribute("total_sts_atr"));%>
         }
     });
     
@@ -88,7 +88,7 @@ FusionCharts.ready(function () {
         dataFormat: 'json',
         dataSource: {
             "chart": {
-                "caption": "Materiais Atribuidos",
+                "caption": "Materiais Com Status (Baixado)",
                 "subCaption": n,
                 "xAxisName": "Materiais",
                 "yAxisName": "Quantidade",
@@ -109,7 +109,7 @@ FusionCharts.ready(function () {
                 "canvasBgColor": "#ffffff"
             },
 
-            "data":<%out.print(request.getSession().getAttribute("teste"));%>
+            "data":<%out.print(request.getSession().getAttribute("total_sts_bxo"));%>
         }
     });
     
@@ -175,13 +175,12 @@ FusionCharts.ready(function () {
 <table>
 
 <tr align="center">
-<td><div id="chart-container">Chart</div></td>
 <td><div id="chart-container2">Chart</div></td>
+<td><div id="chart-container3">Chart</div></td>
 </tr>
 
-<tr align="center">
-<td><div id="chart-container3">Chart</div></td>
-<td><div id="chart-container4">Chart</div></td>
+<tr>
+<td colspan="2"><div align="center" id="chart-container">Chart</div></td>
 </tr>
 
 </table>
