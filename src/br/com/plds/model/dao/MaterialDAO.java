@@ -163,4 +163,82 @@ public class MaterialDAO {
 		
 	}
 	
+public ArrayList<Material> getcontagemMateriaisAtribuidosPorTecnico(String tecnico) throws SQLException{
+		
+		Connection con = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			ResultSet rs = con.createStatement().executeQuery(
+					" SELECT 'Modem' AS label, COUNT(*) AS value FROM atr_modem WHERE status = 'ATRIBUIDO' AND mat_tecnico='" + tecnico + "'" +
+					"union all" +
+					" SELECT 'Roteador' AS label, COUNT(*) AS value FROM atr_roteador WHERE status = 'ATRIBUIDO' AND mat_tecnico='" + tecnico + "'" +
+					"union all" + 
+					" SELECT 'Gabinete' AS label, COUNT(*) AS value FROM atr_gabinete WHERE status = 'ATRIBUIDO' AND mat_tecnico='" + tecnico + "'" + 
+					"union all" +
+					" SELECT 'Cabo' AS label, COUNT(*) AS value FROM atr_cabo WHERE status = 'ATRIBUIDO' AND mat_tecnico='" + tecnico +"'");
+			
+			
+			ArrayList<Material> materiais = new ArrayList<>();
+
+			while (rs.next()) {
+				Material m = new Material();
+				m.setTipo(rs.getString(1));
+				m.setQuantidade(rs.getInt(2));
+				materiais.add(m);
+			}
+
+			return materiais;
+
+		}
+
+		catch (Exception e) {
+
+			con.close();
+			e.printStackTrace();
+			return null;
+
+		}
+		
+	}
+	
+	public ArrayList<Material> getcontagemMateriaisBaixadosPorTecnico(String tecnico) throws SQLException{
+		
+		Connection con = null;
+
+		try {
+
+			con = ConexaoDAO.getConnection();
+			ResultSet rs = con.createStatement().executeQuery(
+					" SELECT 'Modem' AS label, COUNT(*) AS value FROM atr_modem WHERE status = 'BAIXADO' AND mat_tecnico='" + tecnico + "'" +
+					"union all" +
+					" SELECT 'Roteador' AS label, COUNT(*) AS value FROM atr_roteador WHERE status = 'BAIXADO' AND mat_tecnico='" + tecnico + "'" +
+					"union all" + 
+					" SELECT 'Gabinete' AS label, COUNT(*) AS value FROM atr_gabinete WHERE status = 'BAIXADO' AND mat_tecnico='" + tecnico + "'" + 
+					"union all" +
+					" SELECT 'Cabo' AS label, COUNT(*) AS value FROM atr_cabo WHERE status = 'BAIXADO' AND mat_tecnico='" + tecnico + "'");
+			
+			ArrayList<Material> materiais = new ArrayList<>();
+
+			while (rs.next()) {
+				Material m = new Material();
+				m.setTipo(rs.getString(1));
+				m.setQuantidade(rs.getInt(2));
+				materiais.add(m);
+			}
+
+			return materiais;
+
+		}
+
+		catch (Exception e) {
+
+			con.close();
+			return null;
+
+		}
+		
+	}
+	
 }

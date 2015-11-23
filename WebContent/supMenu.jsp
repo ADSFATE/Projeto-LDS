@@ -7,37 +7,34 @@
 <title></title>
 
 <style type="text/css">
-
-.navbar-login
-{
-    width: 305px;
-    padding: 10px;
-    padding-bottom: 0px;
+.navbar-login {
+	width: 305px;
+	padding: 10px;
+	padding-bottom: 0px;
 }
 
-.navbar-login-session
-{
-    padding: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+.navbar-login-session {
+	padding: 10px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
 
+.navbar-footer {
+	background-color: #DDD;
 }
-.navbar-footer 
-{
-    background-color:#DDD;
+
+.navbar-footer-content {
+	padding: 15px 15px 15px 15px;
 }
-.navbar-footer-content { padding:15px 15px 15px 15px; }
+
 .dropdown-menu {
-padding: 0px;
-overflow: hidden;
+	padding: 0px;
+	overflow: hidden;
 }
 
-.icon-size
-{
-    font-size: 87px;
+.icon-size {
+	font-size: 87px;
 }
-
-
 </style>
 
 <script type="text/javascript">
@@ -128,83 +125,148 @@ overflow: hidden;
 						<li><a href="listartecnicos.jsp">Listar</a></li>
 					</ul></li>
 
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="modal" data-target="#myModalSobre" role="button"
+					aria-haspopup="true" aria-expanded="false">Sobre<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+					</ul></li>
+
 			</ul>
 
 
-				 <div class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"></span>
-                        <strong><%out.print(request.getSession().getAttribute("nome"));
-				%></strong>
-                        <span class="glyphicon glyphicon-chevron-down"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="navbar-login">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <p class="text-center">
-                                            <span class="glyphicon glyphicon-user icon-size"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <p class="text-left"><strong><%
-					out.print(request.getSession().getAttribute("user"));
-				%></strong></p>
-                                        <p class="text-left small"><%
-					out.print(request.getSession().getAttribute("role"));
-				%></p>
-                                        <p class="text-left">
-                                           <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#myModal">Perfil</button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider navbar-login-session-bg"></li>
-                        <li class="navbar-login-session-bg">
-                            <div class="navbar-login navbar-login-session">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <p>
-                                            <a href="javascript:logout()" class="btn btn-danger btn-block">Sair</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </div>
+			<div class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
+						<strong> <%
+ 	out.print(request.getSession().getAttribute("nome"));
+ %>
+					</strong> <span class="glyphicon glyphicon-chevron-down"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li>
+							<div class="navbar-login">
+								<div class="row">
+									<div class="col-lg-4">
+										<p class="text-center">
+											<span class="glyphicon glyphicon-user icon-size"></span>
+										</p>
+									</div>
+									<div class="col-lg-8">
+										<p class="text-left">
+											<strong> <%
+ 	out.print(request.getSession().getAttribute("user"));
+ %>
+											</strong>
+										</p>
+										<p class="text-left small">
+											<%
+												out.print(request.getSession().getAttribute("role"));
+											%>
+										</p>
+										<p class="text-left">
+											<button type="button"
+												class="btn btn-primary btn-block btn-sm" data-toggle="modal"
+												data-target="#myModal">Perfil</button>
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="divider navbar-login-session-bg"></li>
+						<li class="navbar-login-session-bg">
+							<div class="navbar-login navbar-login-session">
+								<div class="row">
+									<div class="col-lg-12">
+										<p>
+											<a href="javascript:logout()"
+												class="btn btn-danger btn-block">Sair</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul></li>
+			</div>
 
 
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid --> </nav>
+
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Perfil</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						<strong>Nome: </strong>
+						<%
+							out.print(request.getSession().getAttribute("nome_completo"));
+						%>
+					</p>
+					<p>
+						<strong>Tipo: </strong>
+						<%
+							out.print(request.getSession().getAttribute("role"));
+						%>
+					</p>
+					<p>
+						<strong>Login: </strong>
+						<%
+							out.print(request.getSession().getAttribute("user"));
+						%>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+		<div id="myModalSobre" class="modal fade" role="dialog">
+			<div class="modal-dialog">
 	
-		<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Perfil</h4>
-      </div>
-      <div class="modal-body">
-        <p><strong>Nome: </strong><%out.print(request.getSession().getAttribute("nome_completo"));%></p>
-        <p><strong>Tipo: </strong><%out.print(request.getSession().getAttribute("role"));%></p>
-        <p><strong>Login: </strong><%out.print(request.getSession().getAttribute("user"));%></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Sobre</h4>
+					</div>
+					<div class="modal-body">
+						<p>
+							<strong>Turma: </strong><span>2013.2</span>
+						</p>
+						<p>
+							<strong>Disciplina: </strong><span>Laboratório de
+								Desenvolvimento de Sistemas</span>
+						</p>
+						<p>
+						<strong>Professor: </strong><span>Stênio Silva</span>
+					</p>
+						<p>
+							<strong>Integrantes: </strong> <span><br>Danyel Nobre</span><br>
+							<span>Fábio Alexandrino Cavalcante</span><br> <span>Francisco
+								Ricardo Batista Palácio Leite</span><br> <span>Jolimar
+								Pereira de Araújo</span><br> <span>João Paulo Ferreira</span><br>
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					</div>
+				</div>
+	
+			</div>
+		</div>
 
 </body>
 </html>

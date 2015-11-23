@@ -102,6 +102,19 @@ public class AutenticacaoController extends HttpServlet {
 
 				else if (role.equals("tecnico")) {
 
+					try {
+						totalMateriaisAtribuidos = new Gson().toJson(mDAO
+								.getcontagemMateriais());
+						totalMateriaisStatusAtribuido = new Gson()
+								.toJson(mDAO
+										.getcontagemMateriaisAtribuidosPorTecnico(login));
+						totalMateriaisStatusBaixado = new Gson().toJson(mDAO
+								.getcontagemMateriaisBaixadosPorTecnico(login));
+					
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+
 					request.getSession().setAttribute("user", login);
 					request.getSession().setAttribute("role", "tecnico");
 					String nomeCompleto = "";
@@ -109,6 +122,27 @@ public class AutenticacaoController extends HttpServlet {
 					for (int i = 0; i <= nome.length - 1; i++) {
 						nomeCompleto += " " + nome[i];
 					}
+					
+					totalMateriaisAtribuidos = totalMateriaisAtribuidos
+							.replace("tipo", "label");
+					totalMateriaisAtribuidos = totalMateriaisAtribuidos
+							.replace("quantidade", "value");
+					totalMateriaisStatusAtribuido = totalMateriaisStatusAtribuido
+							.replace("tipo", "label");
+					totalMateriaisStatusAtribuido = totalMateriaisStatusAtribuido
+							.replace("quantidade", "value");
+					totalMateriaisStatusBaixado = totalMateriaisStatusBaixado
+							.replace("tipo", "label");
+					totalMateriaisStatusBaixado = totalMateriaisStatusBaixado
+							.replace("quantidade", "value");
+
+					request.getSession().setAttribute("total_mat_atr",
+							totalMateriaisAtribuidos);
+					request.getSession().setAttribute("total_sts_atr",
+							totalMateriaisStatusAtribuido);
+					request.getSession().setAttribute("total_sts_bxo",
+							totalMateriaisStatusBaixado);
+					
 					request.getSession().setAttribute("nome", nome[0]);
 					request.getSession().setAttribute("nome_completo",
 							nomeCompleto.trim());

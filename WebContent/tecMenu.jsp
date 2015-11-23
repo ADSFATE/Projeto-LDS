@@ -96,6 +96,13 @@
 						<ul class="dropdown-menu">
 							<li><a href="baixargabinete.jsp">Baixar</a></li>
 						</ul></li>
+						
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="modal" data-target="#myModalSobre" role="button"
+					aria-haspopup="true" aria-expanded="false">Sobre<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+					</ul></li>
 
 				</ul>
 
@@ -180,6 +187,41 @@
 
   </div>
 </div>
+
+	<div id="myModalSobre" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Sobre</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						<strong>Turma: </strong><span>2013.2</span>
+					</p>
+					<p>
+						<strong>Disciplina: </strong><span>Laboratório de
+							Desenvolvimento de Sistemas</span>
+					</p>
+					<p>
+						<strong>Professor: </strong><span>Stênio Silva</span>
+					</p>
+					<p>
+						<strong>Integrantes: </strong> <span><br>Danyel Nobre</span><br>
+						<span>Fábio Alexandrino Cavalcante</span><br> <span>Francisco
+							Ricardo Batista Palácio Leite</span><br> <span>Jolimar
+							Pereira de Araújo</span><br> <span>João Paulo Ferreira</span><br>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 </body>
 </html>
