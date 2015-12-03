@@ -202,7 +202,7 @@
 		<br> <br>
 		<div align="center">
 			<input class="btn btn-success btn-lg" type="submit"
-				value="Baixar Modem" name="btnAtribuirRoteador"
+				value="Baixar Roteador" name="btnAtribuirRoteador"
 				id="btnAtribuirRoteador"> <br> <br>
 		</div>
 		<br>

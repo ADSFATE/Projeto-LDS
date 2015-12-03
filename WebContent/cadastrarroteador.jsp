@@ -80,7 +80,7 @@
 		<div class="container">
 			<div class="panel-group">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Atribuição de Modem</div>
+					<div class="panel-heading">Cadastro de Roteador</div>
 					<div class="panel-body"></div>
 
 					<div class="form-group">
